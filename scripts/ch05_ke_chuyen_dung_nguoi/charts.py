@@ -1,5 +1,7 @@
 """
-charts_finance_ops.py — Ch.5 finance P&L (chart-10) and operations dashboard (chart-11).
+ch05_ke_chuyen_dung_nguoi/charts.py — Lens 6 (comparison), Lens 10 (finance P&L),
+and Lens 11 (operations dashboard) charts.
+Chapter 05: Ke Chuyen Dung Nguoi
 """
 
 import matplotlib
@@ -10,7 +12,7 @@ import matplotlib.patches as mpatches
 import numpy as np
 import pandas as pd
 import seaborn as sns
-from chart_helpers import save_fig, PALETTE, CAT_COLORS, vnd_formatter, DATA_CH05, IMG_CH05
+from shared.chart_helpers import save_fig, PALETTE, CAT_COLORS, vnd_formatter, DATA_CH05, IMG_CH05
 
 
 def load_finance() -> pd.DataFrame:
@@ -27,7 +29,103 @@ def load_operations() -> pd.DataFrame:
     return df
 
 
-# ── Chart 10: Finance P&L ─────────────────────────────────────────────────────
+def chart_06_comparison(df_full: pd.DataFrame, df_mar: pd.DataFrame) -> None:
+    """Waterfall T2→T3 + YoY 2023 vs 2024 bar chart + Benchmark comparison."""
+    df_full = df_full.copy()
+    df_full["month"] = df_full["order_date"].dt.to_period("M")
+
+    def month_rev(year: int, month: int) -> float:
+        mask = (df_full["order_date"].dt.year == year) & \
+               (df_full["order_date"].dt.month == month)
+        return df_full.loc[mask, "revenue"].sum()
+
+    rev_feb = month_rev(2024, 2)
+    rev_mar = month_rev(2024, 3)
+    rev_mar23 = month_rev(2023, 3)
+
+    # waterfall components: T2 base → items gained / lost → T3
+    # Simulate category breakdown deltas
+    cats = ["Điện Tử", "Thời Trang", "FMCG", "Gia Dụng", "Thể Thao", "Phụ Kiện"]
+    cat_feb = df_full[(df_full["order_date"].dt.year == 2024) &
+                      (df_full["order_date"].dt.month == 2)].groupby("category")["revenue"].sum()
+    cat_mar = df_full[(df_full["order_date"].dt.year == 2024) &
+                      (df_full["order_date"].dt.month == 3)].groupby("category")["revenue"].sum()
+    deltas = {c: cat_mar.get(c, 0) - cat_feb.get(c, 0) for c in cats}
+
+    # build waterfall data
+    wf_labels = ["T2/2024"] + cats + ["T3/2024"]
+    wf_values = [rev_feb] + [deltas[c] for c in cats] + [rev_mar]
+    bottoms = []
+    running = rev_feb
+    for i, v in enumerate(wf_values):
+        if i == 0 or i == len(wf_values) - 1:
+            bottoms.append(0)
+        else:
+            if v >= 0:
+                bottoms.append(running)
+                running += v
+            else:
+                running += v
+                bottoms.append(running)
+
+    wf_colors = [PALETTE["primary"]] + \
+                [PALETTE["positive"] if d >= 0 else PALETTE["negative"] for d in deltas.values()] + \
+                [PALETTE["secondary"]]
+
+    fig, axes = plt.subplots(1, 3, figsize=(14, 5))
+    fig.suptitle("Lens #6: COMPARISON — So sánh theo thời gian và chuẩn mực",
+                 fontsize=14, fontweight="bold")
+
+    # 1. Waterfall
+    ax = axes[0]
+    bar_vals = [abs(v) for v in wf_values]
+    ax.bar(range(len(wf_labels)), bar_vals, bottom=bottoms,
+           color=wf_colors, alpha=0.85, edgecolor="white", linewidth=0.5)
+    ax.set_xticks(range(len(wf_labels)))
+    ax.set_xticklabels(["T2/2024"] + [c[:6] for c in cats] + ["T3/2024"],
+                       rotation=45, ha="right", fontsize=8)
+    ax.yaxis.set_major_formatter(mticker.FuncFormatter(vnd_formatter))
+    ax.set_title("Biến động doanh thu T2 → T3/2024\n(Waterfall)")
+    ax.set_ylabel("Doanh thu (VND)")
+
+    # 2. YoY bar chart: 2023 vs 2024 monthly
+    labels_yoy = ["T3"]
+    rev_23 = [rev_mar23 / 1e6]
+    rev_24 = [rev_mar / 1e6]
+    x = np.arange(len(labels_yoy))
+    w = 0.35
+    ax2 = axes[1]
+    b1 = ax2.bar(x - w / 2, rev_23, w, label="2023", color=PALETTE["neutral"], alpha=0.85)
+    b2 = ax2.bar(x + w / 2, rev_24, w, label="2024", color=PALETTE["primary"], alpha=0.85)
+    ax2.set_xticks(x)
+    ax2.set_xticklabels(labels_yoy)
+    ax2.set_ylabel("Doanh thu (triệu VND)")
+    ax2.set_title("So sánh YoY: T3/2023 vs T3/2024")
+    ax2.legend()
+    yoy_pct = (rev_mar - rev_mar23) / rev_mar23 * 100
+    ax2.text(0.5, 0.92, f"YoY: +{yoy_pct:.1f}%", transform=ax2.transAxes,
+             ha="center", fontsize=11, color=PALETTE["positive"], fontweight="bold")
+
+    # 3. Benchmark comparison: category revenue vs hypothetical benchmark
+    cat_rev_mar = df_mar.groupby("category")["revenue"].sum().sort_values(ascending=True)
+    # simulate industry benchmark as 110% of actual for most, 90% for Điện Tử
+    benchmarks = cat_rev_mar * np.array([1.1, 1.05, 0.90, 1.08, 1.12, 1.03])
+    ax3 = axes[2]
+    y = np.arange(len(cat_rev_mar))
+    ax3.barh(y - 0.2, cat_rev_mar.values / 1e6, 0.4,
+             label="TechMart T3/2024", color=PALETTE["primary"], alpha=0.85)
+    ax3.barh(y + 0.2, benchmarks.values / 1e6, 0.4,
+             label="Chuẩn ngành (ước tính)", color=PALETTE["neutral"], alpha=0.6)
+    ax3.set_yticks(y)
+    ax3.set_yticklabels(cat_rev_mar.index, fontsize=9)
+    ax3.set_xlabel("Doanh thu (triệu VND)")
+    ax3.set_title("So sánh với chuẩn ngành\ntheo danh mục")
+    ax3.xaxis.set_major_formatter(mticker.FuncFormatter(vnd_formatter))
+    ax3.legend(fontsize=9)
+
+    plt.tight_layout()
+    save_fig(fig, "chart-06-comparison.png", img_dir=IMG_CH05)
+
 
 def chart_10_finance_pl(df: pd.DataFrame) -> None:
     """
@@ -45,7 +143,7 @@ def chart_10_finance_pl(df: pd.DataFrame) -> None:
         fontsize=13, fontweight="bold"
     )
 
-    # ── Left: Stacked bar breakdown ──────────────────────────────────────────
+    # Left: Stacked bar breakdown
     ax = axes[0]
     x = np.arange(len(df2024))
     net_rev = df2024["net_revenue"].values / 1e9
@@ -74,10 +172,8 @@ def chart_10_finance_pl(df: pd.DataFrame) -> None:
     ax.legend(fontsize=7, loc="upper left")
     ax.yaxis.set_major_formatter(mticker.FuncFormatter(lambda v, _: f"{v:.1f}B"))
 
-    # ── Middle: Margin trend lines ───────────────────────────────────────────
+    # Middle: Margin trend lines
     ax = axes[1]
-    # Show both 2023 and 2024 for YoY context
-    df_all = df.sort_values(["year", "month"])
     df2023 = df[df["year"] == 2023].sort_values("month")
 
     x24 = np.arange(len(df2024))
@@ -112,9 +208,8 @@ def chart_10_finance_pl(df: pd.DataFrame) -> None:
         fontsize=8, color=PALETTE["negative"], fontweight="bold",
     )
 
-    # ── Right: Waterfall actual Q1-Q3 vs Q4 target ──────────────────────────
+    # Right: Waterfall actual Q1-Q3 vs Q4 target
     ax = axes[2]
-    # Actuals Q1-Q3 2024
     q1_rev = df2024[df2024["month"].isin([1, 2, 3])]["net_revenue"].sum() / 1e9
     q2_rev = df2024[df2024["month"].isin([4, 5, 6])]["net_revenue"].sum() / 1e9
     q3_rev = df2024[df2024["month"].isin([7, 8, 9])]["net_revenue"].sum() / 1e9
@@ -136,7 +231,6 @@ def chart_10_finance_pl(df: pd.DataFrame) -> None:
         ax.text(bar.get_x() + bar.get_width() / 2, bar.get_height() + 0.3,
                 f"{val:.1f}B", ha="center", va="bottom", fontsize=9, fontweight="bold")
 
-    # Target margin annotation
     q4_profit_needed = q4_target * 0.15
     ax.text(
         0.97, 0.97,
@@ -153,8 +247,6 @@ def chart_10_finance_pl(df: pd.DataFrame) -> None:
     plt.tight_layout()
     save_fig(fig, "chart-10-finance-pl.png", img_dir=IMG_CH05)
 
-
-# ── Chart 11: Operations Dashboard ───────────────────────────────────────────
 
 def chart_11_operations_dashboard(df: pd.DataFrame) -> None:
     """
@@ -182,7 +274,7 @@ def chart_11_operations_dashboard(df: pd.DataFrame) -> None:
         fontsize=13, fontweight="bold"
     )
 
-    # ── Left: Dual-axis delivery time + fulfillment rate ────────────────────
+    # Left: Dual-axis delivery time + fulfillment rate
     ax1 = axes[0]
     color_dt = PALETTE["primary"]
     color_fr = PALETTE["positive"]
@@ -220,7 +312,7 @@ def chart_11_operations_dashboard(df: pd.DataFrame) -> None:
     labs = [l.get_label() for l in lines]
     ax1.legend(lines, labs, fontsize=7, loc="lower left")
 
-    # ── Middle: NPS trend with trendline ────────────────────────────────────
+    # Middle: NPS trend with trendline
     ax = axes[1]
     ax.plot(x, monthly["nps_score"], "o-", color=PALETTE["primary"],
             linewidth=2, markersize=7, label="NPS hàng tháng", zorder=3)
@@ -255,7 +347,7 @@ def chart_11_operations_dashboard(df: pd.DataFrame) -> None:
     ax.legend(fontsize=7)
     ax.set_ylim(monthly["nps_score"].min() - 5, monthly["nps_score"].max() + 8)
 
-    # ── Right: Return rate by month + Jul spike ──────────────────────────────
+    # Right: Return rate by month + Jul spike
     ax = axes[2]
     bar_colors = [
         PALETTE["negative"] if monthly["return_rate_pct"].iloc[i] ==

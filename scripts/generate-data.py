@@ -20,12 +20,12 @@ import os
 sys.path.insert(0, os.path.dirname(__file__))
 
 from pathlib import Path
-from data_generators import (
+from shared.data_generators import (
     generate_mar2024_orders,
     generate_full2024_orders,
     generate_customers,
 )
-from data_generators_extra import (
+from shared.data_generators_extra import (
     generate_marketing_campaigns,
     generate_finance_monthly,
     generate_operations_daily,

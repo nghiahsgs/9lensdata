@@ -1,5 +1,5 @@
 """
-chart_helpers.py — Shared utilities for generate-charts.py.
+shared/chart_helpers.py — Shared utilities for generate-charts.py.
 Handles data loading, styling setup, and reusable plot primitives.
 """
 
@@ -14,7 +14,7 @@ from pathlib import Path
 
 # ── paths ────────────────────────────────────────────────────────────────────
 
-ROOT = Path(__file__).parent.parent
+ROOT = Path(__file__).parent.parent.parent
 CHAPTERS = ROOT / "chapters"
 
 # Per-chapter data directories

@@ -1,5 +1,6 @@
 """
-charts_lens1_2.py — Lens 1 (completeness) and Lens 2 (distribution) charts.
+ch01_ngay_dau_tien/charts.py — Lens 1 (completeness) and Lens 2 (distribution) charts.
+Chapter 01: Ngay Dau Tien
 """
 
 import matplotlib
@@ -8,7 +9,7 @@ import matplotlib.pyplot as plt
 import matplotlib.ticker as mticker
 import numpy as np
 import pandas as pd
-from chart_helpers import save_fig, PALETTE, CAT_COLORS, vnd_formatter, IMG_CH01
+from shared.chart_helpers import save_fig, PALETTE, CAT_COLORS, vnd_formatter, IMG_CH01
 
 
 def chart_01_completeness(df: pd.DataFrame) -> None:

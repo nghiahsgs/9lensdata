@@ -66,15 +66,20 @@ Cuon sach ke ve **Andie** — mot Junior Analyst ngay dau di lam — va hanh tri
 └── scripts/                     # Code sinh data + charts (dung chung)
     ├── generate-data.py             Entry point — sinh tat ca CSV vao chapter/data/
     ├── generate-charts.py           Entry point — sinh tat ca charts vao chapter/images/
-    ├── data_generators.py           Logic sinh data e-commerce + customers
-    ├── data_generators_extra.py     Logic sinh data marketing + finance + ops
-    ├── chart_helpers.py             Shared utilities (style, save, format, paths)
-    ├── charts_lens1_2.py            Charts 01-02 → ch01
-    ├── charts_lens3_4.py            Charts 03-04 → ch02, ch03
-    ├── charts_lens5_6.py            Charts 05-06 → ch04, ch05
-    ├── charts_lens7_8.py            Charts 07-08 → ch03, ch04
-    ├── charts_marketing.py          Chart 09 → ch04
-    └── charts_finance_ops.py        Charts 10-11 → ch05
+    ├── shared/                      Shared utilities (import boi ca 2 entry points)
+    │   ├── chart_helpers.py         Style, save_fig, data loaders, paths
+    │   ├── data_generators.py       Logic sinh data e-commerce + customers
+    │   └── data_generators_extra.py Logic sinh data marketing + finance + ops
+    ├── ch01_ngay_dau_tien/
+    │   └── charts.py                Charts 01-02 (completeness, distribution)
+    ├── ch02_thang_3_giam/
+    │   └── charts.py                Chart 03 (timeline + outliers)
+    ├── ch03_khach_hang_quan_trong/
+    │   └── charts.py                Charts 04, 07 (concentration, segmentation)
+    ├── ch04_correlation_volatility/
+    │   └── charts.py                Charts 05, 08, 09 (correlation, volatility, marketing)
+    └── ch05_ke_chuyen_dung_nguoi/
+        └── charts.py                Charts 06, 10, 11 (comparison, finance, operations)
 ```
 
 ---

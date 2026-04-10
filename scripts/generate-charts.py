@@ -12,18 +12,19 @@ import os
 
 sys.path.insert(0, os.path.dirname(__file__))
 
-from chart_helpers import (
+from shared.chart_helpers import (
     load_mar2024, load_full2024, load_customers,
     IMG_CH01, IMG_CH02, IMG_CH03, IMG_CH04, IMG_CH05,
 )
-from charts_lens1_2 import chart_01_completeness, chart_02_distribution
-from charts_lens3_4 import chart_03_timeline_outliers, chart_04_concentration
-from charts_lens5_6 import chart_05_correlation, chart_06_comparison
-from charts_lens7_8 import chart_07_segmentation, chart_08_volatility
-from charts_marketing import load_marketing, chart_09_marketing_correlation
-from charts_finance_ops import (
+from ch01_ngay_dau_tien.charts import chart_01_completeness, chart_02_distribution
+from ch02_thang_3_giam.charts import chart_03_timeline_outliers
+from ch03_khach_hang_quan_trong.charts import chart_04_concentration, chart_07_segmentation
+from ch04_correlation_volatility.charts import (
+    load_marketing, chart_05_correlation, chart_08_volatility, chart_09_marketing_correlation,
+)
+from ch05_ke_chuyen_dung_nguoi.charts import (
     load_finance, load_operations,
-    chart_10_finance_pl, chart_11_operations_dashboard,
+    chart_06_comparison, chart_10_finance_pl, chart_11_operations_dashboard,
 )
 
 
@@ -43,17 +44,17 @@ def main() -> None:
     print(f"  operations: {len(df_ops):,} rows")
 
     charts = [
-        ("chart-01-completeness",        lambda: chart_01_completeness(df_mar)),
-        ("chart-02-distribution",        lambda: chart_02_distribution(df_mar)),
-        ("chart-03-timeline-outliers",   lambda: chart_03_timeline_outliers(df_full)),
-        ("chart-04-concentration",       lambda: chart_04_concentration(df_mar, df_cust)),
-        ("chart-05-correlation",         lambda: chart_05_correlation(df_mar, df_cust)),
-        ("chart-06-comparison",          lambda: chart_06_comparison(df_full, df_mar)),
-        ("chart-07-segmentation",        lambda: chart_07_segmentation(df_mar, df_cust)),
-        ("chart-08-volatility",          lambda: chart_08_volatility(df_full)),
+        ("chart-01-completeness",          lambda: chart_01_completeness(df_mar)),
+        ("chart-02-distribution",          lambda: chart_02_distribution(df_mar)),
+        ("chart-03-timeline-outliers",     lambda: chart_03_timeline_outliers(df_full)),
+        ("chart-04-concentration",         lambda: chart_04_concentration(df_mar, df_cust)),
+        ("chart-05-correlation",           lambda: chart_05_correlation(df_mar, df_cust)),
+        ("chart-06-comparison",            lambda: chart_06_comparison(df_full, df_mar)),
+        ("chart-07-segmentation",          lambda: chart_07_segmentation(df_mar, df_cust)),
+        ("chart-08-volatility",            lambda: chart_08_volatility(df_full)),
         ("chart-09-marketing-correlation", lambda: chart_09_marketing_correlation(df_mkt)),
-        ("chart-10-finance-pl",          lambda: chart_10_finance_pl(df_fin)),
-        ("chart-11-operations-dashboard", lambda: chart_11_operations_dashboard(df_ops)),
+        ("chart-10-finance-pl",            lambda: chart_10_finance_pl(df_fin)),
+        ("chart-11-operations-dashboard",  lambda: chart_11_operations_dashboard(df_ops)),
     ]
 
     print(f"\nGenerating {len(charts)} charts -> chapters/*/images/\n")

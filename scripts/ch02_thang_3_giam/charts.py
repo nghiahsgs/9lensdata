@@ -1,5 +1,6 @@
 """
-charts_lens3_4.py — Lens 3 (timeline + outliers) and Lens 4 (concentration) charts.
+ch02_thang_3_giam/charts.py — Lens 3 (timeline + outliers) chart.
+Chapter 02: Thang 3 Giam
 """
 
 import matplotlib
@@ -8,7 +9,7 @@ import matplotlib.pyplot as plt
 import matplotlib.ticker as mticker
 import numpy as np
 import pandas as pd
-from chart_helpers import save_fig, PALETTE, CAT_COLORS, vnd_formatter, IMG_CH02, IMG_CH03
+from shared.chart_helpers import save_fig, PALETTE, CAT_COLORS, vnd_formatter, IMG_CH02
 
 
 def chart_03_timeline_outliers(df_full: pd.DataFrame) -> None:
@@ -76,69 +77,3 @@ def chart_03_timeline_outliers(df_full: pd.DataFrame) -> None:
 
     plt.tight_layout()
     save_fig(fig, "chart-03-timeline-outliers.png", img_dir=IMG_CH02)
-
-
-def chart_04_concentration(df_mar: pd.DataFrame, df_cust: pd.DataFrame) -> None:
-    """Lorenz curve + Pareto SKU chart + Pie chart revenue by customer group."""
-    fig, axes = plt.subplots(1, 3, figsize=(14, 5))
-    fig.suptitle("Lens #4: CONCENTRATION — Quy luật tập trung 80/20",
-                 fontsize=14, fontweight="bold")
-
-    # 1. Lorenz curve (customer revenue distribution)
-    cust_rev = df_cust["total_revenue"].sort_values().values
-    n = len(cust_rev)
-    cum_pop = np.linspace(0, 1, n)
-    cum_rev = np.cumsum(cust_rev) / cust_rev.sum()
-    ax = axes[0]
-    ax.plot(cum_pop * 100, cum_rev * 100, color=PALETTE["primary"], linewidth=2,
-            label="Đường Lorenz")
-    ax.plot([0, 100], [0, 100], color=PALETTE["neutral"], linestyle="--",
-            linewidth=1, label="Phân phối đều")
-    # annotate top 20% = 78% revenue
-    ax.axvline(80, color=PALETTE["accent"], linestyle=":", alpha=0.7)
-    ax.axhline(22, color=PALETTE["accent"], linestyle=":", alpha=0.7)
-    ax.text(55, 18, "Top 20% KH\n= 78% DT", fontsize=9,
-            color=PALETTE["accent"], ha="center")
-    ax.fill_between(cum_pop * 100, cum_pop * 100, cum_rev * 100,
-                    alpha=0.12, color=PALETTE["primary"])
-    ax.set_xlabel("% khách hàng (tích luỹ)")
-    ax.set_ylabel("% doanh thu (tích luỹ)")
-    ax.set_title("Đường Lorenz — Bất bình đẳng doanh thu")
-    ax.legend(fontsize=9)
-
-    # 2. Pareto SKU chart
-    sku_rev = (
-        df_mar.groupby("product_name")["revenue"].sum()
-        .sort_values(ascending=False)
-        .head(15)
-    )
-    cum_sku = sku_rev.cumsum() / sku_rev.sum() * 100
-    ax2 = axes[1]
-    bars = ax2.bar(range(len(sku_rev)), sku_rev.values / 1e6,
-                   color=PALETTE["primary"], alpha=0.8)
-    ax2_r = ax2.twinx()
-    ax2_r.plot(range(len(sku_rev)), cum_sku.values, color=PALETTE["negative"],
-               marker="o", markersize=4, linewidth=1.5, label="% tích luỹ")
-    ax2_r.axhline(80, color=PALETTE["accent"], linestyle="--", alpha=0.7)
-    ax2_r.set_ylabel("% doanh thu tích luỹ")
-    ax2_r.set_ylim(0, 110)
-    ax2.set_xticks(range(len(sku_rev)))
-    ax2.set_xticklabels([s[:12] for s in sku_rev.index], rotation=45, ha="right", fontsize=7)
-    ax2.set_ylabel("Doanh thu (triệu VND)")
-    ax2.set_title("Phân tích Pareto — Top 15 SKU")
-
-    # 3. Pie: revenue by customer segment
-    seg_rev = df_cust.groupby("rfm_segment")["total_revenue"].sum()
-    seg_rev = seg_rev.sort_values(ascending=False)
-    colors_pie = CAT_COLORS[:len(seg_rev)]
-    wedges, texts, autotexts = axes[2].pie(
-        seg_rev.values, labels=seg_rev.index, autopct="%1.1f%%",
-        colors=colors_pie, startangle=140,
-        textprops={"fontsize": 8},
-    )
-    for at in autotexts:
-        at.set_fontsize(7)
-    axes[2].set_title("Doanh thu theo phân khúc khách hàng")
-
-    plt.tight_layout()
-    save_fig(fig, "chart-04-concentration.png", img_dir=IMG_CH03)
