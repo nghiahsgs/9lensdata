@@ -31,6 +31,26 @@ Mỗi lens không được dạy như lý thuyết riêng lẻ. Chúng xuất hi
 
 ---
 
+## Về nguồn gốc 9 Lens
+
+9 Lens không phải lý thuyết mới. Đây là cách tác giả tổng hợp 9 kỹ thuật phân tích dữ liệu kinh điển — từ Exploratory Data Analysis của John Tukey (1977), nguyên lý Pareto của Vilfredo Pareto (1896), hệ số tương quan của Karl Pearson, phân tích chuỗi thời gian của Box-Jenkins, đến RFM segmentation từ ngành direct marketing những năm 1930 — thành **1 quy trình tư duy** có thể nhớ và apply ngay.
+
+Bạn sẽ tìm thấy từng lens trong bất kỳ sách thống kê nào. Điều khác biệt là **thứ tự và cách kết hợp chúng**: Hiểu Data (#1-3) → Nhìn Xa (#4-5) → Hiểu Sâu (#6-8) → Đo Risk (#9). Thứ tự này phản ánh cách một analyst thực sự làm việc — không phải cách sách giáo khoa sắp xếp.
+
+| Lens | Nền tảng học thuật |
+|---|---|
+| Completeness | Data Quality Dimensions — ISO 25012, DAMA-DMBOK |
+| Distribution | Descriptive Statistics — histogram, skewness, kurtosis |
+| Outliers | Outlier Detection — Tukey's IQR (1977), Z-score |
+| Timeline | Time Series Decomposition — trend, seasonal, residual |
+| Concentration | Pareto Principle — Vilfredo Pareto (1896), Lorenz Curve (1905) |
+| Correlation | Correlation Analysis — Pearson (1896), Spearman |
+| Comparison | Benchmarking & Hypothesis Testing — Fisher, Neyman-Pearson |
+| Segmentation | Market Segmentation, RFM Analysis, Simpson's Paradox |
+| Volatility | Coefficient of Variation — Karl Pearson, risk management |
+
+---
+
 ## Cách đọc sách này
 
 - Mỗi chapter = 1 tình huống thực tế. Đừng đọc lướt.
