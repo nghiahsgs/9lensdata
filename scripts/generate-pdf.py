@@ -36,14 +36,16 @@ BOOK_CSS = """
 @page {
     size: A4;
     margin: 2.5cm 2cm;
-    @bottom-center { content: counter(page); font-size: 10pt; color: #666; }
+    background-color: #FAF6F1;
+    @bottom-center { content: counter(page); font-size: 10pt; color: #8a8070; }
 }
 
 body {
     font-family: 'Noto Sans', 'Helvetica Neue', Arial, sans-serif;
     font-size: 11pt;
     line-height: 1.7;
-    color: #1a1a1a;
+    color: #2c2416;
+    background-color: #FAF6F1;
     max-width: 100%;
 }
 
@@ -89,19 +91,19 @@ th, td {
 }
 
 th { background-color: #2E86AB; color: white; font-weight: 700; }
-tr:nth-child(even) { background-color: #f8f9fa; }
+tr:nth-child(even) { background-color: #F3EDE4; }
 
 blockquote {
     border-left: 4px solid #F18F01;
     margin: 1.2em 0;
     padding: 0.8em 1.2em;
-    background-color: #fff8f0;
+    background-color: #F3EDE4;
     border-radius: 0 4px 4px 0;
     font-style: italic;
 }
 
 code {
-    background-color: #f4f4f4;
+    background-color: #EDE7DC;
     padding: 2px 6px;
     border-radius: 3px;
     font-size: 9.5pt;
