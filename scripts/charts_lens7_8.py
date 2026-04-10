@@ -9,7 +9,7 @@ import matplotlib.ticker as mticker
 import numpy as np
 import pandas as pd
 import seaborn as sns
-from chart_helpers import save_fig, PALETTE, CAT_COLORS, vnd_formatter
+from chart_helpers import save_fig, PALETTE, CAT_COLORS, vnd_formatter, IMG_CH03, IMG_CH04
 
 
 def chart_07_segmentation(df_mar: pd.DataFrame, df_cust: pd.DataFrame) -> None:
@@ -77,7 +77,7 @@ def chart_07_segmentation(df_mar: pd.DataFrame, df_cust: pd.DataFrame) -> None:
     ax2.legend(title="Tổng DT", fontsize=8, loc="lower right")
 
     plt.tight_layout()
-    save_fig(fig, "chart-07-segmentation.png")
+    save_fig(fig, "chart-07-segmentation.png", img_dir=IMG_CH03)
 
 
 def chart_08_volatility(df_full: pd.DataFrame) -> None:
@@ -179,4 +179,4 @@ def chart_08_volatility(df_full: pd.DataFrame) -> None:
     ax4.xaxis.set_major_formatter(mticker.FuncFormatter(vnd_formatter))
 
     fig.subplots_adjust(top=0.90, hspace=0.45, wspace=0.35)
-    save_fig(fig, "chart-08-volatility.png")
+    save_fig(fig, "chart-08-volatility.png", img_dir=IMG_CH04)

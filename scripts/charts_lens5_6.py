@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 import matplotlib.ticker as mticker
 import numpy as np
 import pandas as pd
-from chart_helpers import save_fig, PALETTE, CAT_COLORS, vnd_formatter
+from chart_helpers import save_fig, PALETTE, CAT_COLORS, vnd_formatter, IMG_CH04, IMG_CH05
 
 
 def chart_05_correlation(df_mar: pd.DataFrame, df_cust: pd.DataFrame) -> None:
@@ -92,7 +92,7 @@ def chart_05_correlation(df_mar: pd.DataFrame, df_cust: pd.DataFrame) -> None:
         axes[2].text(val + offset, i, f"{val:.2f}", va="center", ha=ha, fontsize=9)
 
     plt.tight_layout()
-    save_fig(fig, "chart-05-correlation.png")
+    save_fig(fig, "chart-05-correlation.png", img_dir=IMG_CH04)
 
 
 def chart_06_comparison(df_full: pd.DataFrame, df_mar: pd.DataFrame) -> None:
@@ -191,4 +191,4 @@ def chart_06_comparison(df_full: pd.DataFrame, df_mar: pd.DataFrame) -> None:
     ax3.legend(fontsize=9)
 
     plt.tight_layout()
-    save_fig(fig, "chart-06-comparison.png")
+    save_fig(fig, "chart-06-comparison.png", img_dir=IMG_CH05)

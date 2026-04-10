@@ -53,7 +53,7 @@ Vấn đề không phải là thiếu data. Vấn đề là: **data nào, so sá
 
 > *Con số tuyệt đối không có nghĩa gì. Context từ comparison mới tạo ra meaning. Luôn hỏi: so với cái gì?*
 
-![Biểu đồ 8: Waterfall chart, YoY comparison, và benchmark comparison.](../images/chart-06-comparison.png)
+![Biểu đồ 8: Waterfall chart, YoY comparison, và benchmark comparison.](./images/chart-06-comparison.png)
 
 *Hình 8: 3 cách so sánh khác nhau — mỗi cách cho một loại insight khác nhau.*
 
@@ -104,16 +104,77 @@ A — ANSWER  ← ĐẶT LÊN ĐẦU, không phải cuối
 
 **⭐ Bottom Line Up Front:** Người bận muốn nghe kết luận trước, chi tiết sau.
 
-### 6 slide thay vì 51
+### Andie Kéo Data Từ 3 Nguồn
 
-| Slide | Tiêu Đề (SCQA Style) | Mục Đích |
+Để viết bản tóm tắt 1 trang cho CEO, Andie nhận ra: cậu không thể chỉ dùng sales data của TechMart. CEO không care về 1 dataset — họ care về cả business.
+
+Cậu cần data từ 3 team:
+
+1. **Sales data** (TechMart orders — đã có)
+2. **Finance P&L** — xin từ kế toán
+3. **Operations metrics** — xin từ logistics team
+
+Tưởng đơn giản. Hóa ra không phải.
+
+Finance team gửi Excel. Cột ngày format là `MM/YYYY`. Sales data của Andie dùng `DD/MM/YYYY`. Khi join 2 bảng, tháng 9 của Finance không match với ngày 9 của Sales.
+
+*Lỗi nhỏ. Nhưng nếu không catch — toàn bộ P&L sẽ lệch.*
+
+Operations data còn phức tạp hơn: logistics team đếm "đơn hàng" bao gồm cả B2B orders — những đơn từ đại lý, số lượng lớn, giao tận kho. Sales data của Andie chỉ đếm B2C. Cùng từ "đơn hàng", 2 định nghĩa khác nhau, 2 con số khác nhau.
+
+> 💬 **Andie** *(nhắn anh Trung)*:
+> *"3 nguồn, 3 cách đếm 'đơn hàng'. Nếu em không align definition trước khi tổng hợp, CEO sẽ hỏi 'sao 3 số khác nhau?' và em không trả lời được."*
+
+> 💬 **Anh Trung:**
+> *"Em vừa học bài học quan trọng nhất của multi-source reporting: data reconciliation trước, storytelling sau. Không có bước đầu thì bước hai sẽ sai."*
+
+Andie dành 3 tiếng để align definitions, fix date formats, và document rõ từng con số lấy từ đâu với scope như thế nào. Rồi mới bắt đầu viết tóm tắt.
+
+**Bản tóm tắt 1 trang Andie gửi cho CEO:**
+
+```
+📋 TÓM TẮT Q3/2024 CHO CEO — Andie Nguyen
+═══════════════════════════════════════════
+
+💰 DOANH THU & LỢI NHUẬN (Finance)
+Net Revenue Q3: 11.2 tỷ (+18% YoY) ✅
+Gross Margin: 34% → 31% (↓3pp) ⚠️ COGS tăng nhanh hơn revenue
+Operating Margin: 12% → 9% ⚠️ Marketing spend tăng từ 8% → 12% revenue
+
+📊 KHÁCH HÀNG & ĐƠN HÀNG (Sales)
+Active customers: 8,400 (+12% YoY)
+Revenue/customer: giảm 5% → đang acquire KH giá trị thấp hơn
+Churn rate At-Risk segment: 2.3pp tăng → cần win-back campaign
+
+📦 VẬN HÀNH (Operations)
+Delivery time TB: 2.8 ngày (ổn)
+Fulfillment rate: 94% → 89% trong flash sale ⚠️ capacity bottleneck
+NPS: 45 → 38 (giảm 7 điểm trong 6 tháng) 🔴 nghiêm trọng
+
+🎯 KHUYẾN NGHỊ
+1. Margin: renegotiate supplier contracts (save ~2pp margin)
+2. Marketing: shift 30% Facebook budget → Email (ROAS 6.3x vs 2.1x)
+3. NPS: root cause analysis — suspect delivery delay ở tỉnh
+```
+
+![Finance P&L analysis](./images/chart-10-finance-pl.png)
+*Hình 10: P&L breakdown và xu hướng margin — gross margin đang co lại.*
+
+![Operations dashboard](./images/chart-11-operations-dashboard.png)
+*Hình 11: Operations metrics — NPS giảm đều, fulfillment rate drop khi flash sale.*
+
+### 6 Slide Thay Vì 51
+
+Dựa trên 3 nguồn data, Andie build lại deck. Không phải 6 slide generic — mà 6 slide với data source rõ ràng cho mỗi claim:
+
+| Slide | Tiêu Đề | Data Source |
 |---|---|---|
-| 1 | Q4 Đang Đi Đúng Hướng — 82% Target Sau 2 Tháng | Reassure |
-| 2 | Nhưng Churn Rate Tăng 2.3pp — Cần Xử Lý Ngay | Flag problem |
-| 3 | Nguyên Nhân: 2 Nhóm KH Đang Rời Sang Đối Thủ | Diagnose |
-| 4 | Forecast Q4: 24 Tỷ Base, Range 20-27.6 Tỷ | Align expectations |
-| 5 | 3 Actions, Chi Phí 80tr → Dự Kiến +320tr Revenue | Recommend |
-| 6 | Cần Approve Trước 15/11 Để Kịp Double 11 | Call to action |
+| 1 | Q3 Revenue +18% YoY — Nhưng Margin Đang Co | Finance |
+| 2 | NPS Giảm 7 Điểm — Khách Hàng Đang Không Happy | Operations |
+| 3 | Nguyên Nhân: Delivery Delay + Marketing ROI Thấp | Operations + Marketing |
+| 4 | At-Risk Customers Tăng — Cần Win-back Ngay | Sales (RFM) |
+| 5 | 3 Actions: Supplier, Marketing Realloc, NPS Fix | Multi-source |
+| 6 | Budget 150tr → Dự Kiến +1.2 tỷ Revenue + 3pp Margin | Finance forecast |
 
 Andie gửi bản tóm tắt 1 trang lúc 4h47 chiều. Hôm sau, chị Lan lịch họp lại — lần này 15 phút thật sự.
 
@@ -163,4 +224,4 @@ Cậu mở bằng slide đầu tiên: *"Q4 có thể đạt target nếu chúng 
 
 ---
 
-*→ [Chương 6 — 9 Lens Tổng Hợp](./06-master-framework.md)*
+*→ [Chương 6 — 9 Lens Tổng Hợp](../06-master-framework/)*

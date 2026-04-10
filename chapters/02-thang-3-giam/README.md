@@ -40,7 +40,7 @@ Rồi cậu tự hỏi: *Vậy so sánh đúng trông như thế nào?*
 
 > *Mọi con số đều xảy ra trong thời gian. Trend, seasonality, hay đột biến? Tách ra trước khi kết luận.*
 
-![Biểu đồ 3: Doanh thu theo ngày với anomaly detection và seasonal index.](../images/chart-03-timeline-outliers.png)
+![Biểu đồ 3: Doanh thu theo ngày với anomaly detection và seasonal index.](./images/chart-03-timeline-outliers.png)
 
 *Hình 3: Timeline doanh thu Jan-Sep 2024. Trên: anomaly detection. Dưới: seasonal index theo tháng.*
 
@@ -131,4 +131,4 @@ Checklist So Sánh Apples-to-Apples (Andie tự xây — sau lần sai đầu ti
 
 ---
 
-*→ [Chương 3 — "Khách Hàng Nào Quan Trọng Nhất?"](./03-khach-hang-quan-trong.md)*
+*→ [Chương 3 — "Khách Hàng Nào Quan Trọng Nhất?"](../03-khach-hang-quan-trong/)*

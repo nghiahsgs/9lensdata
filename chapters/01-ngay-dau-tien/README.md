@@ -96,7 +96,7 @@ Cậu nhắn hỏi anh Trung 3 câu. Nhận lại:
 
 Andie bắt đầu "quét sức khỏe" của dataset. Không phải tính toán — mà là nhìn.
 
-![Biểu đồ 1: Heatmap missing values theo cột × tuần. Màu đỏ = vấn đề nghiêm trọng.](../images/chart-01-completeness.png)
+![Biểu đồ 1: Heatmap missing values theo cột × tuần. Màu đỏ = vấn đề nghiêm trọng.](./images/chart-01-completeness.png)
 
 *Hình 1: Heatmap missing values và % thiếu trung bình theo cột.*
 
@@ -122,7 +122,7 @@ Sau khi biết data có ở đó không, câu hỏi tiếp theo: **data trông n
 
 Andie sort cột doanh thu và nhận ra ngay: có đơn 50,000đ, có đơn 28,990,000đ. Khoảng cách cực kỳ lớn. Tính mean hay median?
 
-![Biểu đồ 2: Distribution của 4 cột chính. Mỗi shape kể một câu chuyện khác nhau.](../images/chart-02-distribution.png)
+![Biểu đồ 2: Distribution của 4 cột chính. Mỗi shape kể một câu chuyện khác nhau.](./images/chart-02-distribution.png)
 
 *Hình 2: 4 loại distribution khác nhau trong cùng 1 dataset.*
 
@@ -176,4 +176,4 @@ PHÁT HIỆN NHANH
 
 ---
 
-*→ Chương tiếp theo: [Chương 2 — "Tháng 3 Doanh Số Giảm?"](./02-thang-3-giam.md)*
+*→ Chương tiếp theo: [Chương 2 — "Tháng 3 Doanh Số Giảm?"](../02-thang-3-giam/)*

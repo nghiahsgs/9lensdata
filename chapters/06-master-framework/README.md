@@ -93,6 +93,43 @@ Cuối năm. Andie lên Senior Analyst. Nhìn lại, cậu nhận ra: mọi bài
 
 ---
 
+## 9 Lens Ngoài E-commerce — Mini Cases
+
+TechMart là nơi Andie học. Nhưng 9 Lens không thuộc về e-commerce.
+
+> **🏥 Mini Case — Lens #1 COMPLETENESS trong Y tế**
+> Bệnh viện X phát hiện 30% hồ sơ bệnh nhân thiếu cột huyết áp. Không phải ngẫu nhiên — y tá ca đêm không đo vì thiếu nhân lực. Kết quả: bác sĩ kê đơn cao huyết áp dựa trên data thiếu → under-diagnosis hàng loạt. Cùng pattern "missing không ngẫu nhiên" như rating KH của TechMart — bỏ qua pattern này là bỏ qua sự thật.
+
+> **🏘️ Mini Case — Lens #2 DISTRIBUTION trong Bất động sản**
+> Giá nhà ở một quận right-skewed nặng: median 3 tỷ, mean 8 tỷ. Một vài biệt thự kéo mean lên cao. Agent dùng mean để quảng cáo "giá trung bình 8 tỷ" — khách hàng phổ thông đến xem rồi thất vọng. Dùng sai metric, mất cả traffic lẫn trust.
+
+> **🏦 Mini Case — Lens #3 OUTLIERS trong Ngân hàng**
+> Hệ thống flagged một giao dịch 500 triệu lúc 3h sáng từ tài khoản thường chỉ giao dịch dưới 5 triệu. Analyst đầu tiên tưởng lỗi hệ thống, định bỏ qua. Analyst thứ hai điều tra — đây là money laundering signal thật. Outlier không phải lỗi. Outlier là câu hỏi.
+
+> **🎓 Mini Case — Lens #4 TIMELINE trong Giáo dục**
+> Điểm thi toán toàn quốc giảm 3 năm liên tiếp — headline báo: "Chất lượng giáo dục đi xuống." Nhưng khi tách timeline theo loại trường: trường thành thị giữ nguyên, trường nông thôn giảm đều. Trend tổng hợp che giấu trend thật. Fix đúng vấn đề phải nhìn đúng segment theo thời gian.
+
+> **💻 Mini Case — Lens #5 CONCENTRATION trong Startup SaaS**
+> Startup có 120 khách hàng, MRR 2 tỷ. Nghe ổn. Nhưng 3 enterprise clients = 72% MRR. Tháng 7, 1 client lớn nhất báo churn — công ty mất 38% doanh thu trong 1 email. Concentration risk không hiện ra trong dashboard average. Chỉ hiện ra khi bạn hỏi "80% đến từ 20% nào?"
+
+> **👥 Mini Case — Lens #6 CORRELATION trong HR**
+> HR phát hiện: nhân viên đi muộn correlate với tỷ lệ resign trong 3 tháng tiếp theo (r = 0.52). Đề xuất ban đầu: "Phạt tiền đi muộn để giảm resign." Nhưng thật ra cả đi muộn lẫn resign đều do burnout — workload quá cao. Phạt đi muộn không fix burnout. Lại là confounding variable.
+
+> **₿ Mini Case — Lens #7 COMPARISON trong Crypto/Finance**
+> Investor khoe: "Tháng này Bitcoin của tôi tăng 40%!" Nghe ấn tượng. Nhưng cùng tháng đó ETH tăng 65%, altcoin index tăng 80%. So với benchmark phù hợp — nhà đầu tư này thật ra underperform thị trường. "Tốt" hay "xấu" phụ thuộc vào so với cái gì.
+
+> **🍜 Mini Case — Lens #8 SEGMENTATION trong F&B**
+> Nhà hàng có average bill 250K. Menu được thiết kế quanh mức này. Nhưng khi segment theo giờ: buổi trưa bill TB 120K (nhân viên văn phòng ăn nhanh), buổi tối 480K (gia đình ăn cuối tuần). Menu 250K không phù hợp với cả hai nhóm. Average che giấu 2 nhóm khách hàng hoàn toàn khác nhau với nhu cầu hoàn toàn khác nhau.
+
+> **🚚 Mini Case — Lens #9 VOLATILITY trong Logistics**
+> Công ty logistics áp 1 SLA chung: "Giao hàng trong 3 ngày." Nhưng CV thời gian giao nội thành = 15% (ổn định), CV liên tỉnh = 65% (cực kỳ volatile). SLA 3 ngày ổn cho nội thành — nhưng liên tỉnh cần buffer thêm 2 ngày để đạt cùng mức confidence. Cùng 1 con số, 2 thực tế hoàn toàn khác nhau.
+
+---
+
+9 Lens không phải framework chỉ cho e-commerce. Bất kỳ ngành nào có data — y tế, tài chính, giáo dục, logistics, HR — đều cần cùng những câu hỏi này. Tool thay đổi, ngành thay đổi, nhưng cách đặt câu hỏi thì không.
+
+---
+
 ## Lời Kết
 
 > 💬 **Andie nói với Linh — junior mới join:**

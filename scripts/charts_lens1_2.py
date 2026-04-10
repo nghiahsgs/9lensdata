@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 import matplotlib.ticker as mticker
 import numpy as np
 import pandas as pd
-from chart_helpers import save_fig, PALETTE, CAT_COLORS, vnd_formatter
+from chart_helpers import save_fig, PALETTE, CAT_COLORS, vnd_formatter, IMG_CH01
 
 
 def chart_01_completeness(df: pd.DataFrame) -> None:
@@ -64,7 +64,7 @@ def chart_01_completeness(df: pd.DataFrame) -> None:
         axes[1].text(val + 1, i, f"{val:.1f}%", va="center", fontsize=9)
 
     plt.tight_layout()
-    save_fig(fig, "chart-01-completeness.png")
+    save_fig(fig, "chart-01-completeness.png", img_dir=IMG_CH01)
 
 
 def chart_02_distribution(df: pd.DataFrame) -> None:
@@ -131,4 +131,4 @@ def chart_02_distribution(df: pd.DataFrame) -> None:
                     bbox=dict(boxstyle="round,pad=0.3", facecolor="#f8f9fa"))
 
     plt.tight_layout()
-    save_fig(fig, "chart-02-distribution.png")
+    save_fig(fig, "chart-02-distribution.png", img_dir=IMG_CH01)

@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 import matplotlib.ticker as mticker
 import numpy as np
 import pandas as pd
-from chart_helpers import save_fig, PALETTE, CAT_COLORS, vnd_formatter
+from chart_helpers import save_fig, PALETTE, CAT_COLORS, vnd_formatter, IMG_CH02, IMG_CH03
 
 
 def chart_03_timeline_outliers(df_full: pd.DataFrame) -> None:
@@ -75,7 +75,7 @@ def chart_03_timeline_outliers(df_full: pd.DataFrame) -> None:
                  f"{val:.2f}", ha="center", va="bottom", fontsize=9)
 
     plt.tight_layout()
-    save_fig(fig, "chart-03-timeline-outliers.png")
+    save_fig(fig, "chart-03-timeline-outliers.png", img_dir=IMG_CH02)
 
 
 def chart_04_concentration(df_mar: pd.DataFrame, df_cust: pd.DataFrame) -> None:
@@ -141,4 +141,4 @@ def chart_04_concentration(df_mar: pd.DataFrame, df_cust: pd.DataFrame) -> None:
     axes[2].set_title("Doanh thu theo phân khúc khách hàng")
 
     plt.tight_layout()
-    save_fig(fig, "chart-04-concentration.png")
+    save_fig(fig, "chart-04-concentration.png", img_dir=IMG_CH03)

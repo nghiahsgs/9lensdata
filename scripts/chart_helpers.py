@@ -15,8 +15,27 @@ from pathlib import Path
 # ── paths ────────────────────────────────────────────────────────────────────
 
 ROOT = Path(__file__).parent.parent
-DATA_DIR = ROOT / "data"
-IMG_DIR = ROOT / "images"
+CHAPTERS = ROOT / "chapters"
+
+# Per-chapter data directories
+DATA_DIR = CHAPTERS / "01-ngay-dau-tien" / "data"  # default (orders-mar2024)
+
+# Per-chapter data paths (used by loaders)
+DATA_CH01 = CHAPTERS / "01-ngay-dau-tien" / "data"
+DATA_CH02 = CHAPTERS / "02-thang-3-giam" / "data"
+DATA_CH03 = CHAPTERS / "03-khach-hang-quan-trong" / "data"
+DATA_CH04 = CHAPTERS / "04-correlation-volatility" / "data"
+DATA_CH05 = CHAPTERS / "05-ke-chuyen-dung-nguoi" / "data"
+
+# Per-chapter image directories
+IMG_CH01 = CHAPTERS / "01-ngay-dau-tien" / "images"
+IMG_CH02 = CHAPTERS / "02-thang-3-giam" / "images"
+IMG_CH03 = CHAPTERS / "03-khach-hang-quan-trong" / "images"
+IMG_CH04 = CHAPTERS / "04-correlation-volatility" / "images"
+IMG_CH05 = CHAPTERS / "05-ke-chuyen-dung-nguoi" / "images"
+
+# IMG_DIR kept for backward-compat in generate-charts.py summary scan
+IMG_DIR = CHAPTERS  # not used for saving; each chart uses its own chapter IMG dir
 
 # ── style ────────────────────────────────────────────────────────────────────
 
@@ -42,9 +61,12 @@ plt.rcParams.update({
 })
 
 
-def save_fig(fig: plt.Figure, filename: str, dpi: int = 150) -> None:
-    IMG_DIR.mkdir(parents=True, exist_ok=True)
-    path = IMG_DIR / filename
+def save_fig(fig: plt.Figure, filename: str, dpi: int = 150, img_dir: Path = None) -> None:
+    """Save figure to the given img_dir (or IMG_CH01 as fallback)."""
+    if img_dir is None:
+        img_dir = IMG_CH01
+    img_dir.mkdir(parents=True, exist_ok=True)
+    path = img_dir / filename
     fig.savefig(path, dpi=dpi, bbox_inches="tight", facecolor="white")
     plt.close(fig)
     print(f"  -> saved {path}")
@@ -62,16 +84,16 @@ def vnd_formatter(x, pos=None) -> str:
 # ── data loaders ─────────────────────────────────────────────────────────────
 
 def load_mar2024() -> pd.DataFrame:
-    df = pd.read_csv(DATA_DIR / "techmart-orders-mar2024.csv", encoding="utf-8-sig")
+    df = pd.read_csv(DATA_CH01 / "techmart-orders-mar2024.csv", encoding="utf-8-sig")
     df["order_date"] = pd.to_datetime(df["order_date"])
     return df
 
 
 def load_full2024() -> pd.DataFrame:
-    df = pd.read_csv(DATA_DIR / "techmart-orders-full2024.csv", encoding="utf-8-sig")
+    df = pd.read_csv(DATA_CH02 / "techmart-orders-full2024.csv", encoding="utf-8-sig")
     df["order_date"] = pd.to_datetime(df["order_date"])
     return df
 
 
 def load_customers() -> pd.DataFrame:
-    return pd.read_csv(DATA_DIR / "techmart-customers.csv", encoding="utf-8-sig")
+    return pd.read_csv(DATA_CH03 / "techmart-customers.csv", encoding="utf-8-sig")
