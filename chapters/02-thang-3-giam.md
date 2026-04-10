@@ -9,7 +9,30 @@
 
 Giám đốc kinh doanh — anh Khải — mở đầu cuộc họp thứ Hai bằng câu đó. Cả phòng xôn xao. Ai đó: *"Marketing yếu."* Người khác: *"Thị trường khó."*
 
-Andie nhíu mày. Trước khi trả lời, cậu cần nhìn vào timeline.
+Andie nhìn xuống slide thứ 3 trong bộ deck cậu chuẩn bị từ sáng: biểu đồ cột MoM, tháng 2 cao chót vót, tháng 3 thấp hẳn xuống. Cậu đã chuẩn bị xong phần thuyết trình, sẵn sàng đồng thuận.
+
+> 💬 **Andie** *(giơ tay)*:
+> *"Đúng rồi anh, giảm 16%... Em có slide MoM breakdown—"*
+
+Cậu bắt đầu chuyển slide. Anh Trung ngồi cuối bàn khẽ nhíu mày.
+
+> 💬 **Anh Trung** *(ngắt lời)*:
+> *"Khoan. T2 có Valentine campaign. T3 data mới có 28 ngày. Em đang so sánh kiểu gì vậy?"*
+
+Cả phòng im lặng. Mười lăm người nhìn vào slide của Andie.
+
+Cậu đứng hình. Slide của cậu so sánh tổng revenue tháng 2 với tháng 3 — nhưng tháng 2 có 29 ngày và một campaign lớn, tháng 3 mới chỉ có 28 ngày và không có sự kiện gì. Cậu đang so sánh cam với táo mà không biết.
+
+> 💬 **Anh Trung:**
+> *"Tiếp tục đi. Nhưng sau họp em check lại phần này."*
+
+Andie gật đầu, chuyển sang slide tiếp theo. Nhưng cậu không còn nghe gì nữa — đầu cậu đang tính toán lại, nhận ra mình vừa present con số misleading trước 15 người.
+
+Sau họp, cậu về bàn, đóng cửa sổ Slack, và bắt đầu viết ra giấy:
+
+**"Mình vừa present con số misleading trước 15 người. Bài học: KHÔNG BAO GIỜ so sánh mà chưa check context."**
+
+Rồi cậu tự hỏi: *Vậy so sánh đúng trông như thế nào?*
 
 ---
 
@@ -70,10 +93,12 @@ Andie nhíu mày. Trước khi trả lời, cậu cần nhìn vào timeline.
 
 ## So sánh đúng — Apples-to-apples?
 
-Andie giơ tay: *"Anh ơi, trước khi kết luận — 4.3 tỷ và 5.1 tỷ có phải so sánh apples-to-apples không?"*
+Ngồi lại một mình, Andie không bào chữa. Cậu tự hỏi: *Mình nên check những gì TRƯỚC khi so sánh hai con số?*
+
+Cậu bắt đầu ghi ra. Đây là checklist cậu tự xây sau buổi họp đó:
 
 ```
-Checklist So Sánh Apples-to-Apples:
+Checklist So Sánh Apples-to-Apples (Andie tự xây — sau lần sai đầu tiên):
 □ Khoảng thời gian có bằng nhau? (28 ngày vs 31 ngày = KHÔNG BẰNG)
 □ Có sự kiện đặc biệt? (Valentine Day → tăng giả tạo)
 □ Định nghĩa có nhất quán? (Revenue gross hay net?)
@@ -102,6 +127,7 @@ Checklist So Sánh Apples-to-Apples:
 - **Lens #4 TIMELINE:** Nhìn chuỗi thời gian trước khi so sánh. Trend? Seasonality? Hay đột biến?
 - MoM mislead khi có seasonality — YoY loại bỏ seasonal effect, đáng tin hơn.
 - Waterfall chart và seasonal index giúp nhìn "cái gì thay đổi" thay vì chỉ "thay đổi bao nhiêu".
+- Andie xây checklist apples-to-apples KHÔNG phải vì được dạy — mà vì cậu vừa present sai trước 15 người. Đau là cách học nhanh nhất.
 
 ---
 

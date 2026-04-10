@@ -14,11 +14,31 @@ Andie, 24 tuổi, vừa tốt nghiệp Kinh tế Ngoại Thương. Ngày đầu 
 
 Andie mở file. **12,847 dòng. 11 cột.** Cậu ngồi nhìn trong 3 phút, ngón tay hover trên bàn phím mà chưa gõ gì.
 
-**Phản xạ đầu tiên:** cộng tổng doanh thu ngay. Nhưng cậu dừng lại.
+**Phản xạ đầu tiên:** cộng tổng doanh thu. Cậu hào hứng, filter cột "Doanh Thu", bấm SUM. Excel trả về con số: **5,127,841,300đ**.
 
-*"Tổng để làm gì? Mình có biết con số đó là tốt hay xấu không?"*
+*Ồ, 5.1 tỷ. Nghe to đấy.*
 
-Đó là khoảnh khắc quan trọng đầu tiên trong sự nghiệp của Andie. Cậu không biết mình vừa làm đúng.
+Cậu chưa để ý đến cột "Trạng Thái". Chưa nhận ra dataset có cả đơn hủy, đơn hoàn trả lẫn lộn với đơn hoàn thành.
+
+10h45, cậu gõ tin nhắn cho anh Trung:
+
+> 💬 **Andie:**
+> *"Anh ơi, em xem xong rồi. Doanh thu tháng 3 là 5.1 tỷ ạ!"*
+
+Ba phút sau:
+
+> 💬 **Anh Trung:**
+> *"Em tính cả đơn hủy và hoàn trả vào à? Số thật là bao nhiêu?"*
+
+Mặt Andie đỏ bừng. Cậu nhìn lại file — và thấy ngay vấn đề. Cột "Trạng Thái" có ba giá trị: ✅ Hoàn thành, ❌ Đã hủy, 🔄 Hoàn trả. Cậu vừa cộng tất cả vào một.
+
+Filter lại chỉ đơn "Hoàn thành": **4,387,234,000đ**.
+
+Chênh lệch: **740,607,300đ — tức 14.6%**.
+
+**"Mình vừa suýt báo sếp con số sai 14.6%. Ngày đầu đi làm."**
+
+Cậu ngồi yên một lúc. Không phải vì xấu hổ — mà vì cậu đang cố hiểu tại sao mình sai. Không phải do cậu không biết tính. Mà do cậu chưa hỏi: *con số này là gì, tính từ đâu, loại trừ cái gì?*
 
 ---
 
@@ -53,11 +73,11 @@ Andie mở file. **12,847 dòng. 11 cột.** Cậu ngồi nhìn trong 3 phút, n
 
 ## Andie nhìn data — Lần quét đầu tiên
 
-Andie không mở Excel ngay. Cậu lấy tờ giấy A4 và hỏi:
+Sau sai lầm đầu tiên, Andie không vội tính lại. Cậu lấy tờ giấy A4 và buộc mình phải hỏi:
 
 **"Dữ liệu này về ai, cái gì, khi nào, từ đâu, để làm gì?"**
 
-Câu hỏi đó tưởng đơn giản nhưng buộc Andie phải nhận ra: cậu không biết "doanh thu" trong file là trước hay sau giảm giá. Cậu không biết data đã đủ 31 ngày chưa. Cậu không biết "đã hủy" có được tính vào doanh thu không.
+Câu hỏi đó tưởng đơn giản nhưng buộc Andie phải nhận ra thêm hai điều cậu chưa biết: "doanh thu" trong file là trước hay sau giảm giá? Và tháng 3 đã đủ 31 ngày chưa?
 
 Cậu nhắn hỏi anh Trung 3 câu. Nhận lại:
 
@@ -66,7 +86,7 @@ Cậu nhắn hỏi anh Trung 3 câu. Nhận lại:
 > - *"Tháng 3 mới đến ngày 28 — data chưa đủ."*
 > - *"Đã hủy và hoàn trả thì KHÔNG tính doanh thu."*
 
-> 💡 **Insight:** Nếu Andie không hỏi và cứ tính tổng toàn bộ file, con số sẽ **sai ~14.6%**. Một câu hỏi đúng lúc = tiết kiệm cả buổi chiều làm lại.
+> 💡 **Insight:** Ba câu hỏi này — Andie chỉ hỏi sau khi đã báo sai một lần. Bài học không phải là "hỏi vì thủ tục" — mà là: **hỏi vì mày vừa sai và cần hiểu tại sao.** Một câu hỏi đúng lúc = tiết kiệm cả buổi chiều làm lại, và tránh được con số sai 14.6% trước mặt sếp.
 
 ---
 
@@ -150,7 +170,8 @@ PHÁT HIỆN NHANH
 
 - **Lens #1 COMPLETENESS:** Luôn kiểm tra missing trước. Missing ngẫu nhiên ≠ Missing có pattern — cách xử lý hoàn toàn khác.
 - **Lens #2 DISTRIBUTION:** Shape của data quyết định metric bạn dùng. Right-skewed → Median > Mean.
-- Hỏi trước, tính sau: 3 câu hỏi đúng lúc tránh được sai lầm 14.6% trong báo cáo.
+- Hỏi trước, tính sau: 3 câu hỏi đúng lúc tránh được sai lầm 14.6% trong báo cáo. Andie học điều này sau khi đã báo sai — không phải trước.
+- Sai lầm đầu tiên của Andie không phải do dốt. Mà do cậu **chưa đặt câu hỏi về định nghĩa** trước khi bấm tính. Bất kỳ analyst nào cũng từng mắc sai lầm này.
 - *"Data bẩn + phân tích đẹp = insight sai."* — Không có gì quan trọng hơn data quality.
 
 ---

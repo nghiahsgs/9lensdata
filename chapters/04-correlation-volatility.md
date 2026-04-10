@@ -56,6 +56,40 @@ Experiment PROVE (hoặc disprove) nó.
 | Revenue tổng | **−0.29** (yếu) | Chi nhiều hơn → Ít churn hơn |
 | Giới tính | **+0.02** (không có) | Không có signal |
 
+### Sai lầm Andie gần mắc — Correlation ≠ Causation
+
+Nhìn vào bảng trên, Andie thấy ngay: rating trung bình có r = −0.44 với churn. Con số đủ lớn để tự tin. Cậu chuẩn bị một đề xuất và mang ra team meeting:
+
+> 💬 **Andie:**
+> *"Rating thấp GÂY RA churn. Nếu chúng ta cải thiện rating — ví dụ qua customer service — churn sẽ giảm."*
+
+Senior analyst Minh — ngồi cạnh cửa sổ, ba năm kinh nghiệm — ngẩng đầu lên:
+
+> 💬 **Minh:**
+> *"Khoan. Em đang nói correlation hay causation? Có thể cả rating thấp lẫn churn đều do cùng một nguyên nhân — ví dụ shipping delay vừa khiến rating thấp, vừa khiến khách bỏ đi. Em cải thiện customer service nhưng không fix shipping thì sao?"*
+
+> 💬 **Andie:**
+> *"Ơ... đúng rồi..."*
+
+Minh đứng dậy, vẽ lên bảng trắng:
+
+```
+Shipping Delay
+    │
+    ├──→ Rating thấp  ─┐
+    │                   ├──→ (Andie nghĩ: Rating gây ra Churn)
+    └──→ Churn cao   ──┘
+
+Sự thật: Cả hai đều là HỆ QUẢ của cùng một nguyên nhân.
+```
+
+> 💬 **Minh:**
+> *"Confounding variable. Em nhìn r = −0.44 và kết luận nhân quả. Đây là sai lầm cơ bản nhất trong data analysis."*
+
+**"Mình đã nhìn r = −0.44 và kết luận nhân quả. Sai lầm cơ bản nhất trong data analysis."**
+
+Andie ghi lại — không phải vì Minh bảo ghi, mà vì cậu vừa suýt đề xuất một giải pháp sai hoàn toàn dựa trên một kết luận sai.
+
 ---
 
 ## 🔭 Lens #9: VOLATILITY
@@ -93,6 +127,7 @@ CV > 50%  → Volatile, đừng forecast — scenario plan thay thế
 - **Lens #9 VOLATILITY:** CV = Std/Mean. CV < 20% → ổn định. CV > 50% → volatile, dùng scenario planning.
 - Risk Matrix (Volatility × Impact) giúp prioritize danh mục nào cần quản lý chặt nhất.
 - Sai lầm phổ biến: dùng cùng 1 model để forecast cho tất cả danh mục có volatility khác nhau.
+- Confounding variable là lý do correlation không bao giờ là bằng chứng nhân quả. Andie học điều này khi gần đề xuất một can thiệp sai hoàn toàn.
 
 ---
 
