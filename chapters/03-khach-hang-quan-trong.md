@@ -1,0 +1,94 @@
+# Chương 3 — "Khách Hàng Nào Quan Trọng Nhất?"
+## *Concentration, Segmentation — và cạm bẫy của Average*
+
+---
+
+## 50 triệu ngân sách, 28,000 khách hàng
+
+Tháng thứ 3. Sếp đặt vấn đề: *"Ngân sách marketing 50 triệu để giữ chân khách hàng. Em phân tích xem nên tập trung vào nhóm nào để ROI tốt nhất?"*
+
+> ⏸ **DỪNG LẠI 5 PHÚT**
+>
+> Bạn có 50 triệu và 28,000 khách hàng. Trước khi đọc tiếp:
+> 1. Bạn sẽ tiếp cận đều tất cả không? Tại sao không?
+> 2. Tiêu chí nào để xác định "khách hàng quan trọng"?
+> 3. Nếu chỉ chọn 1 nhóm để tập trung — bạn chọn nhóm nào và dựa trên logic gì?
+
+---
+
+## 🔭 Lens #5: CONCENTRATION
+
+> *80% kết quả đến từ 20% nguyên nhân. Tìm ra con số đó trước khi làm bất cứ thứ gì.*
+
+![Biểu đồ 4: Lorenz curve, Pareto SKU chart, và concentration map.](../images/chart-04-concentration.png)
+
+*Hình 4: Ba cách nhìn concentration — Lorenz curve, Pareto chart, và tỷ trọng revenue.*
+
+**Kết quả phân tích Pareto:**
+
+| Nhóm KH | Số KH | % Tổng KH | Doanh Thu/Năm | % Revenue | Revenue/KH |
+|---|---|---|---|---|---|
+| Top 5% (VIP) | 1,400 | 5% | 7.8 tỷ | 43% | 5,571,000đ |
+| Top 6-20% (Loyal) | 4,200 | 15% | 6.4 tỷ | 35% | 1,524,000đ |
+| Mid 21-50% (Regular) | 8,400 | 30% | 3.1 tỷ | 17% | 369,000đ |
+| Bottom 50% (Casual) | 14,000 | 50% | 0.9 tỷ | 5% | 64,000đ |
+
+> 💡 **Insight:** Revenue/KH của Top 5% cao gấp **87 lần** Bottom 50%. Đây không phải không công bằng — đây là thực tế của mọi business. Hiểu điều này giúp allocate nguồn lực đúng chỗ.
+
+---
+
+## 🔭 Lens #8: SEGMENTATION
+
+> *Average luôn che giấu sự khác biệt quan trọng. Segment trước, conclude sau.*
+
+![Biểu đồ 5: Simpson's Paradox, Revenue heatmap 2D, Segment bubble map.](../images/chart-07-segmentation.png)
+
+*Hình 5: Segmentation theo nhiều chiều — heatmap 2D và segment map.*
+
+### RFM — Phân khúc khách hàng chuyên nghiệp
+
+```
+R — Recency:   Lần cuối mua hàng cách đây bao lâu? (Gần = điểm cao)
+F — Frequency: Đã mua bao nhiêu lần trong 6 tháng qua? (Nhiều = điểm cao)
+M — Monetary:  Tổng chi tiêu là bao nhiêu? (Cao = điểm cao)
+```
+
+**6 nhóm RFM — TechMart 28,000 KH:**
+
+| Segment | Đặc Điểm | Số KH | % Revenue | Avg Revenue/KH | Chiến Lược |
+|---|---|---|---|---|---|
+| 🏆 Champions | Mua gần, nhiều, chi nhiều | 1,240 | 34% | 4,988,000đ | Reward VIP, upsell |
+| 💚 Loyal Customers | Mua đều đặn, ổn định | 2,890 | 28% | 1,758,000đ | Loyalty program |
+| ⚠️ At Risk | Từng mua nhiều, lâu không thấy | 1,670 | 19% | 2,072,000đ | **← WIN-BACK ĐÂY** |
+| 🌱 Potential Loyalists | Mới mua, tiềm năng cao | 3,210 | 11% | 621,000đ | Nurture, educate |
+| 💤 Hibernating | Rất lâu không thấy | 4,990 | 5% | 182,000đ | Reactivation nhẹ |
+| 💀 Lost | Không mua >180 ngày, giá trị thấp | 13,000 | 3% | 42,000đ | Ignore (ROI âm) |
+
+### Simpson's Paradox — Khi Average Nói Dối
+
+```
+Hiện tượng: Retention tổng hợp = 42%, nhưng KHÔNG khu vực nào đạt 42%.
+
+• TP.HCM:      38%  (15,000 KH) ← Đông nhất, kéo tổng về phía nó
+• Hà Nội:      41%   (8,000 KH)
+• Tỉnh khác:   52%   (5,000 KH)
+• TỔNG:        42%  ← Bị dominated bởi TP.HCM
+
+Nguyên nhân: Weighted average bị dominated bởi nhóm có size lớn nhất.
+Bài học: Khi thấy average "lạ", phân tách theo segment ngay.
+```
+
+> 💡 **Insight:** Nhóm "At Risk" (1,670 người) tạo 19% doanh thu (~3.46 tỷ/năm). Nếu giữ được 30% trong nhóm này quay lại → revenue tăng thêm ~1 tỷ/năm = ROI 20x so với 50 triệu đầu tư.
+
+---
+
+## Bài Học Chương 3
+
+- **Lens #5 CONCENTRATION:** 20% KH tạo 78% revenue. Tìm ra 20% đó trước khi làm bất cứ thứ gì.
+- **Lens #8 SEGMENTATION:** Simpson's Paradox — average tổng hợp có thể ngược chiều với từng subgroup.
+- RFM biến 28,000 người thành 6 nhóm có thể hành động cụ thể.
+- Nhóm "At Risk" là goldmine: đã biết sản phẩm, đã tin tưởng, chỉ cần được nhắc đúng lúc.
+
+---
+
+*→ [Chương 4 — "Cái Gì Đang Predict Cái Gì?"](./04-correlation-volatility.md)*
