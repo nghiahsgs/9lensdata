@@ -16,13 +16,13 @@ from shared.chart_helpers import (
     load_mar2024, load_full2024, load_customers,
     IMG_CH01, IMG_CH02, IMG_CH03, IMG_CH04, IMG_CH05,
 )
-from ch01_ngay_dau_tien.charts import chart_01_completeness, chart_02_distribution
-from ch02_thang_3_giam.charts import chart_03_timeline_outliers
-from ch03_khach_hang_quan_trong.charts import chart_04_concentration, chart_07_segmentation
-from ch04_correlation_volatility.charts import (
+from ch01.charts import chart_01_completeness, chart_02_distribution
+from ch02.charts import chart_03_timeline_outliers
+from ch03.charts import chart_04_concentration, chart_07_segmentation
+from ch04.charts import (
     load_marketing, chart_05_correlation, chart_08_volatility, chart_09_marketing_correlation,
 )
-from ch05_ke_chuyen_dung_nguoi.charts import (
+from ch05.charts import (
     load_finance, load_operations,
     chart_06_comparison, chart_10_finance_pl, chart_11_operations_dashboard,
 )
