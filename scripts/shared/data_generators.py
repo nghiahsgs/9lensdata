@@ -114,7 +114,11 @@ def generate_mar2024_orders(n: int = 12_847) -> pd.DataFrame:
     # inject 1 test entry with price=1000
     prices[3] = 1_000.0
 
-    discounts = RNG.beta(1.5, 8, n).round(2)  # skewed low, mostly <20%
+    # discounts: ~35% no discount, rest skewed low (mostly 5-20%)
+    discounts = np.zeros(n)
+    has_discount = RNG.random(n) > 0.35  # 65% get some discount
+    discounts[has_discount] = RNG.beta(1.5, 6, has_discount.sum()).round(2)
+    discounts = np.clip(discounts, 0, 0.70)
 
     revenue = qty * prices * (1 - discounts)
 
@@ -126,7 +130,19 @@ def generate_mar2024_orders(n: int = 12_847) -> pd.DataFrame:
              for d, s in zip(days_offset, seconds_offset)]
 
     cities = RNG.choice(CITIES, size=n, p=CITY_WEIGHTS)
-    statuses = RNG.choice(STATUSES, size=n, p=STATUS_WEIGHTS)
+
+    # status varies by category (overall ~85/8/7 but different per category)
+    CAT_STATUS_WEIGHTS = {
+        "Điện Tử":    [0.82, 0.11, 0.07],  # high cancel (price comparison)
+        "Thời Trang": [0.80, 0.06, 0.14],  # high return (sizing issues)
+        "FMCG":       [0.92, 0.05, 0.03],  # low cancel/return (cheap, consumable)
+        "Gia Dụng":   [0.85, 0.08, 0.07],  # moderate
+        "Thể Thao":   [0.86, 0.07, 0.07],  # moderate
+        "Phụ Kiện":   [0.88, 0.06, 0.06],  # low
+    }
+    statuses = np.array([
+        RNG.choice(STATUSES, p=CAT_STATUS_WEIGHTS[c]) for c in cats
+    ])
 
     # ratings: ~60% missing; unhappy customers rate more → left-skew for raters
     ratings = []

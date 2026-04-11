@@ -165,9 +165,9 @@ Andie nhìn tiếp 2 cột chưa khai thác: discount và status.
 
 ![Biểu đồ 2d: Phân phối giảm giá và tỉ lệ hủy/hoàn trả theo danh mục.](./images/chart-02d-discount-status.png)
 
-*Hình 2d: Đa số đơn giảm giá dưới 15%. Tỉ lệ hoàn thành 85%, hủy ~8%, hoàn trả ~7%. Tỉ lệ hủy/hoàn trả khá đều giữa các danh mục.*
+*Hình 2d: 35% đơn không giảm giá, số còn lại giảm trung bình ~9%. Tỉ lệ hủy/hoàn trả khác nhau rõ rệt giữa các danh mục.*
 
-> 💡 **Insight:** Tổng đơn hủy + hoàn trả = ~14.7% — tức cứ 7 đơn thì có 1 đơn không thành công. Đây là con số mà Andie suýt tính nhầm vào doanh thu ở đầu chapter. Nếu tỉ lệ này tăng theo tháng, đó sẽ là tín hiệu cảnh báo quan trọng cần theo dõi trong Timeline (Lens #4).
+> 💡 **Insight:** Thời Trang hoàn trả **14%** (cao nhất) — khách mua online không thử được, mặc không vừa thì trả. Điện Tử hủy đơn **11%** (cao nhất) — khách so giá giữa nhiều sàn rồi đổi ý. FMCG chỉ **3% hoàn trả** — ai mua dầu gội rồi lại đi trả? Mỗi danh mục cần chiến lược giảm hủy/trả khác nhau: Thời Trang cần bảng size chính xác, Điện Tử cần chính sách giá cạnh tranh.
 
 ---
 
