@@ -5,7 +5,7 @@
 
 ## Buổi sáng thứ Hai đầu tiên đi làm
 
-Andie, 24 tuổi, vừa tốt nghiệp Kinh tế Ngoại Thương. Ngày đầu làm Junior Analyst tại **TechMart** — một công ty thương mại điện tử mid-size. Cậu chưa bao giờ dùng SQL, chưa viết dòng Python nào.
+Andie, 24 tuổi, vừa tốt nghiệp Kinh tế Ngoại Thương. Ngày đầu làm Junior Analyst tại **TechMart** — một công ty thương mại điện tử mid-size, bán đủ loại từ điện thoại, laptop đến quần áo, đồ gia dụng và hàng tiêu dùng nhanh (nên giá trị đơn hàng dao động rất lớn — từ vài chục nghìn đến vài chục triệu). Cậu chưa bao giờ dùng SQL, chưa viết dòng Python nào.
 
 9h14 sáng, Slack rung lên:
 
