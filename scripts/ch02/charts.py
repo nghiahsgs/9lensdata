@@ -54,12 +54,41 @@ def chart_03_timeline_outliers(df_full: pd.DataFrame) -> None:
                     daily["upper"].fillna(0) / 1e6,
                     alpha=0.15, color=PALETTE["secondary"], label="Dải ±2σ")
     ax.scatter(anomalies["date"], anomalies["revenue"] / 1e6,
-               color=PALETTE["negative"], zorder=5, s=60, label="Điểm bất thường")
+               color=PALETTE["negative"], zorder=5, s=100,
+               edgecolors="darkred", linewidths=1.5, label="Điểm bất thường")
+
+    # Annotate key anomalies (top 3 high + top 2 low)
+    if len(anomalies) > 0:
+        top_high = anomalies.nlargest(3, "revenue")
+        top_low = anomalies.nsmallest(2, "revenue")
+        for _, row in top_high.iterrows():
+            ax.annotate(
+                f"↑ {row['revenue']/1e6:.0f}M",
+                xy=(row["date"], row["revenue"] / 1e6),
+                xytext=(0, 15), textcoords="offset points",
+                fontsize=8, fontweight="bold", color="darkred",
+                ha="center",
+            )
+        for _, row in top_low.iterrows():
+            ax.annotate(
+                f"↓ {row['revenue']/1e6:.0f}M",
+                xy=(row["date"], row["revenue"] / 1e6),
+                xytext=(0, -20), textcoords="offset points",
+                fontsize=8, fontweight="bold", color="darkred",
+                ha="center",
+            )
+
     ax.yaxis.set_major_formatter(mticker.FuncFormatter(lambda x, _: f"{x:.0f}M"))
     ax.set_ylabel("Doanh thu (triệu VND)")
     ax.set_title("Doanh thu theo ngày với dải phát hiện bất thường")
-    ax.legend(fontsize=9)
+    ax.legend(fontsize=9, loc="upper left")
     ax.tick_params(axis="x", rotation=30)
+
+    # Add explanation box
+    ax.text(0.98, 0.95,
+            "Nằm trong dải hồng = bình thường\nChấm đỏ ngoài dải = bất thường",
+            transform=ax.transAxes, ha="right", va="top", fontsize=8,
+            bbox=dict(boxstyle="round,pad=0.4", facecolor="#fff0f0", edgecolor="darkred", alpha=0.9))
 
     # bottom: seasonal index
     ax2 = axes[1]
