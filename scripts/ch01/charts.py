@@ -200,3 +200,54 @@ def chart_02b_category_breakdown(df: pd.DataFrame) -> None:
 
     plt.tight_layout()
     save_fig(fig, "chart-02b-category-breakdown.png", img_dir=IMG_CH01)
+
+
+def chart_02c_city_breakdown(df: pd.DataFrame) -> None:
+    """Bar charts: order count, revenue, and avg order value by city."""
+    completed = df[df["status"] == "Hoàn thành"].copy()
+
+    city_stats = completed.groupby("city").agg(
+        order_count=("order_id", "count"),
+        total_revenue=("revenue", "sum"),
+        avg_order_value=("revenue", "median"),
+    ).sort_values("total_revenue", ascending=False)
+
+    fig, axes = plt.subplots(1, 3, figsize=(18, 6))
+    fig.suptitle("Phân bổ theo thành phố", fontsize=14, fontweight="bold")
+
+    colors = [PALETTE["primary"] if c in ["TP.HCM", "Hà Nội"]
+              else PALETTE["neutral"] for c in city_stats.index]
+
+    # 1. Số đơn hàng
+    bars1 = axes[0].bar(city_stats.index, city_stats["order_count"], color=colors, alpha=0.85)
+    axes[0].set_title("Số đơn hàng theo thành phố", fontsize=11)
+    axes[0].set_ylabel("Số đơn")
+    axes[0].tick_params(axis="x", rotation=25)
+    for bar, val in zip(bars1, city_stats["order_count"]):
+        pct = val / city_stats["order_count"].sum() * 100
+        axes[0].text(bar.get_x() + bar.get_width() / 2, bar.get_height() + 50,
+                     f"{pct:.0f}%", ha="center", fontsize=9, fontweight="bold")
+
+    # 2. Doanh thu
+    bars2 = axes[1].bar(city_stats.index, city_stats["total_revenue"] / 1e9,
+                        color=colors, alpha=0.85)
+    axes[1].set_title("Doanh thu theo thành phố (tỷ VNĐ)", fontsize=11)
+    axes[1].set_ylabel("Tỷ VNĐ")
+    axes[1].tick_params(axis="x", rotation=25)
+    for bar, val in zip(bars2, city_stats["total_revenue"]):
+        pct = val / city_stats["total_revenue"].sum() * 100
+        axes[1].text(bar.get_x() + bar.get_width() / 2, bar.get_height() + 0.02,
+                     f"{pct:.0f}%", ha="center", fontsize=9, fontweight="bold")
+
+    # 3. Giá trị đơn hàng trung vị
+    bars3 = axes[2].bar(city_stats.index, city_stats["avg_order_value"] / 1_000,
+                        color=colors, alpha=0.85)
+    axes[2].set_title("Giá trị đơn trung vị (nghìn VNĐ)", fontsize=11)
+    axes[2].set_ylabel("Nghìn VNĐ")
+    axes[2].tick_params(axis="x", rotation=25)
+    for bar, val in zip(bars3, city_stats["avg_order_value"]):
+        axes[2].text(bar.get_x() + bar.get_width() / 2, bar.get_height() + 5,
+                     f"{val/1_000:.0f}K", ha="center", fontsize=9)
+
+    plt.tight_layout()
+    save_fig(fig, "chart-02c-city-breakdown.png", img_dir=IMG_CH01)
