@@ -155,9 +155,9 @@ Andie nhìn thêm cột City: *"TP.HCM và Hà Nội chiếm bao nhiêu? Tỉnh 
 
 ![Biểu đồ 2c: Phân bổ số đơn, doanh thu, và giá trị đơn trung vị theo thành phố.](./images/chart-02c-city-breakdown.png)
 
-*Hình 2c: TP.HCM chiếm 58% đơn và 57% doanh thu. Nhưng giá trị đơn trung vị giữa các thành phố gần nhau — cho thấy sự chênh lệch doanh thu chủ yếu do volume, không phải do giá trị đơn.*
+*Hình 2c: TP.HCM doanh thu gấp 10 lần Cần Thơ — nhưng giá trị đơn trung vị gần nhau (~500-600K). Nghĩa là: người Cần Thơ mua đồ tương tự người HCM, chỉ là ít người mua hơn. Chênh lệch doanh thu do số lượng đơn (volume), không phải do giá trị đơn.*
 
-> 💡 **Insight:** TP.HCM + Hà Nội = 85% đơn hàng. Nếu một trong hai thành phố có sự cố (hết hàng, logistics gặp vấn đề), doanh thu sẽ ảnh hưởng cực lớn. Đây cũng là concentration risk — nhưng theo chiều địa lý.
+> 💡 **Insight:** Nếu muốn tăng doanh thu ở tỉnh → cần tăng **số lượng khách** (marketing, mở kênh), không phải upsell đơn đắt hơn — vì giá trị đơn đã tương đương HCM rồi. Ngoài ra, TP.HCM + Hà Nội = 85% đơn hàng → nếu 1 trong 2 thành phố gặp sự cố, doanh thu ảnh hưởng cực lớn. Đây là concentration risk theo chiều địa lý.
 
 ---
 
