@@ -163,3 +163,9 @@ TechMart là nơi Andie học. Nhưng 9 Lens không thuộc về e-commerce.
 | p-value | Xác suất kết quả xảy ra do may mắn (ngưỡng < 0.05). | #6 |
 | Baseline | "Nếu không làm gì thì là bao nhiêu?" | #7 |
 | Survivorship Bias | Chỉ thấy data từ "người sống sót". | #1, #2 |
+| FMCG | Fast-Moving Consumer Goods — hàng tiêu dùng nhanh (sữa, dầu gội, mì gói). | #2, #9 |
+| RFM | Recency-Frequency-Monetary — phân khúc KH theo 3 chiều. | #8 |
+| ROAS | Return on Ad Spend — doanh thu / chi phí quảng cáo. | #6 |
+| CAC | Customer Acquisition Cost — chi phí để có 1 khách hàng mới. | #6 |
+| MoM | Month-over-Month — so với tháng trước. | #4, #7 |
+| NPS | Net Promoter Score — đo mức độ KH sẵn sàng giới thiệu. | #7 |

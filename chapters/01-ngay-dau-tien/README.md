@@ -49,7 +49,7 @@ Cậu ngồi yên một lúc. Không phải vì xấu hổ — mà vì cậu đa
 | DH-00001 | KH-2847 | 01/03/2024 | iPhone 15 Pro 256GB | Điện Tử | 1 | 28,990,000 | 0% | 28,990,000 | TP.HCM | ✅ Hoàn thành |
 | DH-00002 | KH-1023 | 01/03/2024 | Áo thun basic trắng | Thời Trang | 3 | 199,000 | 10% | 537,300 | Hà Nội | ✅ Hoàn thành |
 | DH-00003 | KH-2847 | 02/03/2024 | AirPods Pro 2nd Gen | Điện Tử | 2 | 5,990,000 | 5% | 11,381,000 | TP.HCM | ✅ Hoàn thành |
-| DH-00004 | KH-0291 | 02/03/2024 | Dầu gội Rejoice 650ml | FMCG | 5 | 85,000 | 0% | 425,000 | Đà Nẵng | ❌ Đã hủy |
+| DH-00004 | KH-0291 | 02/03/2024 | Dầu gội Rejoice 650ml | FMCG* | 5 | 85,000 | 0% | 425,000 | Đà Nẵng | ❌ Đã hủy |
 | DH-00005 | KH-3301 | 03/03/2024 | Laptop Dell Inspiron 15 | Điện Tử | 1 | 22,500,000 | 15% | 19,125,000 | TP.HCM | 🔄 Hoàn trả |
 | DH-00006 | KH-0892 | 03/03/2024 | Quần jean slim fit | Thời Trang | 2 | 450,000 | 0% | 900,000 | Hà Nội | ✅ Hoàn thành |
 | DH-00007 | KH-4421 | 04/03/2024 | Máy lọc nước Kangaroo | Gia Dụng | 1 | 3,800,000 | 8% | 3,496,000 | Cần Thơ | ✅ Hoàn thành |
@@ -57,6 +57,8 @@ Cậu ngồi yên một lúc. Không phải vì xấu hổ — mà vì cậu đa
 | DH-00009 | KH-5512 | 05/03/2024 | Tạ tay 10kg (cặp) | Thể Thao | 1 | 280,000 | 10% | 252,000 | Hải Phòng | ✅ Hoàn thành |
 | DH-00010 | KH-2847 | 06/03/2024 | Ốp lưng iPhone 15 Pro | Phụ Kiện | 1 | 350,000 | 0% | 350,000 | TP.HCM | ✅ Hoàn thành |
 | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | *(12,837 dòng nữa)* |
+
+*\*FMCG = Fast-Moving Consumer Goods — hàng tiêu dùng nhanh (sữa, dầu gội, mì gói...): mua thường xuyên, giá thấp, dùng hết nhanh.*
 
 ---
 
