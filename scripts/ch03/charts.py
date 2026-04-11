@@ -80,10 +80,11 @@ def chart_04_concentration(df_mar: pd.DataFrame, df_cust: pd.DataFrame) -> None:
 
 
 def chart_07_segmentation(df_mar: pd.DataFrame, df_cust: pd.DataFrame) -> None:
-    """Revenue heatmap (City × Category) + RFM segment bubble map."""
-    fig, axes = plt.subplots(1, 2, figsize=(14, 5))
+    """Revenue heatmap (City × Category) + RFM segment bubble map (separate rows)."""
+    fig, axes = plt.subplots(2, 1, figsize=(14, 14),
+                             gridspec_kw={"height_ratios": [1, 1.2]})
     fig.suptitle("Lens #7: SEGMENTATION — Phân tích theo nhóm và không gian",
-                 fontsize=14, fontweight="bold")
+                 fontsize=15, fontweight="bold")
 
     # 1. Revenue heatmap City × Category
     pivot = df_mar.pivot_table(
@@ -93,15 +94,16 @@ def chart_07_segmentation(df_mar: pd.DataFrame, df_cust: pd.DataFrame) -> None:
     sns.heatmap(
         pivot_m, ax=axes[0], annot=True, fmt=".0f", cmap="Blues",
         linewidths=0.5, cbar_kws={"label": "Doanh thu (triệu VND)"},
+        annot_kws={"fontsize": 11},
     )
-    axes[0].set_title("Doanh thu theo Thành phố × Danh mục\n(triệu VND)")
-    axes[0].set_xlabel("Danh mục sản phẩm")
-    axes[0].set_ylabel("Thành phố")
-    axes[0].tick_params(axis="x", rotation=30)
-    axes[0].tick_params(axis="y", rotation=0)
+    axes[0].set_title("Doanh thu theo Thành phố × Danh mục (triệu VND) — Tháng 3/2024",
+                      fontsize=12)
+    axes[0].set_xlabel("Danh mục sản phẩm", fontsize=11)
+    axes[0].set_ylabel("Thành phố", fontsize=11)
+    axes[0].tick_params(axis="x", rotation=30, labelsize=10)
+    axes[0].tick_params(axis="y", rotation=0, labelsize=10)
 
-    # 2. RFM segment bubble map
-    # axes: x=avg_order_value, y=total_orders, size=total_revenue, color=segment
+    # 2. RFM segment bubble map — LARGE
     seg_agg = df_cust.groupby("rfm_segment").agg(
         avg_aov=("avg_order_value", "mean"),
         avg_orders=("total_orders", "mean"),
@@ -120,28 +122,32 @@ def chart_07_segmentation(df_mar: pd.DataFrame, df_cust: pd.DataFrame) -> None:
     ax2 = axes[1]
     for _, row in seg_agg.iterrows():
         color = seg_colors.get(row["rfm_segment"], PALETTE["neutral"])
-        size = row["total_rev"] / seg_agg["total_rev"].max() * 3000
+        size = row["total_rev"] / seg_agg["total_rev"].max() * 5000
         ax2.scatter(
             row["avg_aov"] / 1_000,
             row["avg_orders"],
-            s=size, color=color, alpha=0.75, edgecolors="white", linewidth=1.5,
+            s=size, color=color, alpha=0.75, edgecolors="white", linewidth=2,
         )
         ax2.annotate(
-            f"{row['rfm_segment']}\n(n={row['count']:,})",
+            f"{row['rfm_segment']}\n{row['count']:,} khách",
             xy=(row["avg_aov"] / 1_000, row["avg_orders"]),
-            xytext=(8, 4), textcoords="offset points",
-            fontsize=8,
+            xytext=(12, 6), textcoords="offset points",
+            fontsize=10, fontweight="bold",
         )
 
-    ax2.set_xlabel("Giá trị đơn hàng TB (nghìn VND)")
-    ax2.set_ylabel("Số đơn hàng TB")
-    ax2.set_title("Bản đồ phân khúc RFM\n(kích thước = tổng doanh thu)")
+    ax2.set_xlabel("Giá trị trung bình mỗi đơn (nghìn VND)", fontsize=11)
+    ax2.set_ylabel("Số đơn hàng trung bình mỗi khách", fontsize=11)
+    ax2.set_title("Bản đồ phân khúc RFM — Dữ liệu T1-T9/2024 (9 tháng)\n"
+                  "Bong bóng càng TO = tổng doanh thu nhóm càng LỚN",
+                  fontsize=12)
+    ax2.tick_params(labelsize=10)
 
     # legend for bubble size
-    for rev_m, label in [(1e9, "1B VND"), (5e9, "5B VND")]:
-        size_leg = rev_m / seg_agg["total_rev"].max() * 3000
+    for rev_m, label in [(1e9, "1 tỷ VND"), (5e9, "5 tỷ VND")]:
+        size_leg = rev_m / seg_agg["total_rev"].max() * 5000
         ax2.scatter([], [], s=size_leg, color=PALETTE["neutral"], alpha=0.5, label=label)
-    ax2.legend(title="Tổng DT", fontsize=8, loc="lower right")
+    ax2.legend(title="Tổng doanh thu", fontsize=10, loc="lower right",
+               title_fontsize=10)
 
     plt.tight_layout()
     save_fig(fig, "chart-07-segmentation.png", img_dir=IMG_CH03)
