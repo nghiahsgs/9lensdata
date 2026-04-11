@@ -78,9 +78,9 @@ def chart_02_distribution(df: pd.DataFrame) -> None:
     # 1. Revenue histogram — right-skewed
     rev = df["revenue"][df["revenue"] > 0]
     axes[0, 0].hist(rev / 1_000, bins=60, color=PALETTE["primary"], edgecolor="white", alpha=0.85)
-    axes[0, 0].set_xlabel("Doanh thu (nghìn VND)")
+    axes[0, 0].set_xlabel("Giá trị đơn hàng (nghìn VND)")
     axes[0, 0].set_ylabel("Số đơn hàng")
-    axes[0, 0].set_title("Phân phối doanh thu (lệch phải)")
+    axes[0, 0].set_title("Số đơn theo giá trị đơn hàng (lệch phải)")
     axes[0, 0].axvline(rev.median() / 1_000, color=PALETTE["accent"],
                        linestyle="--", label=f"Median: {rev.median()/1000:.0f}K")
     axes[0, 0].axvline(rev.mean() / 1_000, color=PALETTE["negative"],
