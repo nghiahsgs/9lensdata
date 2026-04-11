@@ -140,6 +140,15 @@ def generate_mar2024_orders(n: int = 12_847) -> pd.DataFrame:
         else:
             ratings.append(float(RNG.choice([3, 4, 5], p=[0.15, 0.45, 0.40])))
 
+    # delivery days: bimodal — HCM/HN ~1.5 days, others ~4 days
+    delivery_days = np.zeros(n)
+    for i, city in enumerate(cities):
+        if city in ["TP.HCM", "Hà Nội"]:
+            delivery_days[i] = max(0.5, RNG.normal(1.5, 0.4))
+        else:
+            delivery_days[i] = max(1.0, RNG.normal(4.0, 0.8))
+    delivery_days = np.round(delivery_days, 1)
+
     df = pd.DataFrame({
         "order_id": [f"ORD{str(i+1).zfill(6)}" for i in range(n)],
         "customer_id": [f"CUS{str(RNG.integers(1, 28001)).zfill(6)}" for _ in range(n)],
@@ -153,6 +162,7 @@ def generate_mar2024_orders(n: int = 12_847) -> pd.DataFrame:
         "city": cities,
         "quan_huyen": _make_quanhuyen(pd.Series(cities)),
         "status": statuses,
+        "delivery_days": delivery_days,
         "rating": ratings,
     })
     return df

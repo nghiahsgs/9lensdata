@@ -88,14 +88,8 @@ def chart_02_distribution(df: pd.DataFrame) -> None:
     axes[0, 0].legend(fontsize=9)
     axes[0, 0].set_xlim(0, rev.quantile(0.99) / 1_000)
 
-    # 2. Delivery time (simulated bimodal: standard 3-5d + express 1-2d)
-    np.random.seed(42)
-    n = len(df)
-    delivery = np.concatenate([
-        np.random.normal(4, 0.8, int(n * 0.65)),   # standard
-        np.random.normal(1.5, 0.4, int(n * 0.35)),  # express
-    ])
-    delivery = np.clip(delivery, 0.5, 10)
+    # 2. Delivery time — from CSV column delivery_days
+    delivery = df["delivery_days"].dropna()
     axes[0, 1].hist(delivery, bins=40, color=PALETTE["secondary"], edgecolor="white", alpha=0.85)
     axes[0, 1].set_xlabel("Ngày giao hàng")
     axes[0, 1].set_ylabel("Số đơn hàng")
