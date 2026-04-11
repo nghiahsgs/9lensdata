@@ -19,6 +19,7 @@ from shared.chart_helpers import (
 from ch01.charts import (
     chart_01_completeness, chart_02_distribution,
     chart_02b_category_breakdown, chart_02c_city_breakdown,
+    chart_02d_discount_and_status,
 )
 from ch02.charts import chart_03_timeline_outliers
 from ch03.charts import chart_04_concentration, chart_07_segmentation
@@ -51,6 +52,7 @@ def main() -> None:
         ("chart-02-distribution",          lambda: chart_02_distribution(df_mar)),
         ("chart-02b-category-breakdown",   lambda: chart_02b_category_breakdown(df_mar)),
         ("chart-02c-city-breakdown",       lambda: chart_02c_city_breakdown(df_mar)),
+        ("chart-02d-discount-status",      lambda: chart_02d_discount_and_status(df_mar)),
         ("chart-03-timeline-outliers",     lambda: chart_03_timeline_outliers(df_full)),
         ("chart-04-concentration",         lambda: chart_04_concentration(df_mar, df_cust)),
         ("chart-05-correlation",           lambda: chart_05_correlation(df_mar, df_cust)),

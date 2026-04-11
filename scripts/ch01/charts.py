@@ -245,3 +245,60 @@ def chart_02c_city_breakdown(df: pd.DataFrame) -> None:
 
     plt.tight_layout()
     save_fig(fig, "chart-02c-city-breakdown.png", img_dir=IMG_CH01)
+
+
+def chart_02d_discount_and_status(df: pd.DataFrame) -> None:
+    """Discount distribution + order status breakdown."""
+    fig, axes = plt.subplots(1, 3, figsize=(18, 6))
+    fig.suptitle("Phân phối giảm giá & trạng thái đơn hàng",
+                 fontsize=14, fontweight="bold")
+
+    # 1. Histogram: discount distribution
+    disc = df["discount_pct"] * 100  # convert to %
+    axes[0].hist(disc, bins=30, color=PALETTE["accent"], edgecolor="white", alpha=0.85)
+    axes[0].set_xlabel("Mức giảm giá (%)")
+    axes[0].set_ylabel("Số đơn hàng")
+    axes[0].set_title("Phân phối mức giảm giá")
+    axes[0].axvline(disc.median(), color=PALETTE["primary"],
+                    linestyle="--", label=f"Median: {disc.median():.1f}%")
+    axes[0].axvline(disc.mean(), color=PALETTE["negative"],
+                    linestyle="--", label=f"Mean: {disc.mean():.1f}%")
+    no_disc = (disc == 0).sum()
+    no_disc_pct = no_disc / len(disc) * 100
+    axes[0].text(0.97, 0.95, f"{no_disc_pct:.0f}% đơn\nkhông giảm giá",
+                 transform=axes[0].transAxes, ha="right", va="top",
+                 fontsize=9, bbox=dict(boxstyle="round,pad=0.3", facecolor="#f8f9fa"))
+    axes[0].legend(fontsize=9)
+
+    # 2. Status pie chart
+    status_counts = df["status"].value_counts()
+    status_colors = [PALETTE["positive"], PALETTE["negative"], PALETTE["accent"]]
+    axes[1].pie(
+        status_counts.values, labels=status_counts.index,
+        colors=status_colors[:len(status_counts)],
+        autopct="%1.1f%%", startangle=90,
+        textprops={"fontsize": 10},
+        wedgeprops={"edgecolor": "white", "linewidth": 1.5},
+    )
+    axes[1].set_title("Trạng thái đơn hàng")
+
+    # 3. Cancel + return rate by category
+    cat_status = df.groupby(["category", "status"]).size().unstack(fill_value=0)
+    cat_total = cat_status.sum(axis=1)
+    cat_cancel_pct = (cat_status.get("Đã hủy", 0) / cat_total * 100).sort_values(ascending=False)
+    cat_return_pct = (cat_status.get("Hoàn trả", 0) / cat_total * 100).sort_values(ascending=False)
+
+    x = range(len(cat_cancel_pct))
+    width = 0.35
+    axes[2].bar([i - width / 2 for i in x], cat_cancel_pct.values,
+                width, label="% Hủy đơn", color=PALETTE["negative"], alpha=0.85)
+    axes[2].bar([i + width / 2 for i in x], cat_return_pct.reindex(cat_cancel_pct.index).values,
+                width, label="% Hoàn trả", color=PALETTE["accent"], alpha=0.85)
+    axes[2].set_xticks(list(x))
+    axes[2].set_xticklabels(cat_cancel_pct.index, rotation=25, ha="right", fontsize=9)
+    axes[2].set_ylabel("Phần trăm (%)")
+    axes[2].set_title("Tỉ lệ hủy & hoàn trả theo danh mục")
+    axes[2].legend(fontsize=9)
+
+    plt.tight_layout()
+    save_fig(fig, "chart-02d-discount-status.png", img_dir=IMG_CH01)

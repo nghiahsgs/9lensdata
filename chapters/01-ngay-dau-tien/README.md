@@ -159,6 +159,16 @@ Andie nhìn thêm cột City: *"TP.HCM và Hà Nội chiếm bao nhiêu? Tỉnh 
 
 > 💡 **Insight:** Nếu muốn tăng doanh thu ở tỉnh → cần tăng **số lượng khách** (marketing, mở kênh), không phải upsell đơn đắt hơn — vì giá trị đơn đã tương đương HCM rồi. Ngoài ra, TP.HCM + Hà Nội = 85% đơn hàng → nếu 1 trong 2 thành phố gặp sự cố, doanh thu ảnh hưởng cực lớn. Đây là concentration risk theo chiều địa lý.
 
+### Giảm giá & Trạng thái đơn — Mất bao nhiêu vào hủy/hoàn trả?
+
+Andie nhìn tiếp 2 cột chưa khai thác: discount và status.
+
+![Biểu đồ 2d: Phân phối giảm giá và tỉ lệ hủy/hoàn trả theo danh mục.](./images/chart-02d-discount-status.png)
+
+*Hình 2d: Đa số đơn giảm giá dưới 15%. Tỉ lệ hoàn thành 85%, hủy ~8%, hoàn trả ~7%. Tỉ lệ hủy/hoàn trả khá đều giữa các danh mục.*
+
+> 💡 **Insight:** Tổng đơn hủy + hoàn trả = ~14.7% — tức cứ 7 đơn thì có 1 đơn không thành công. Đây là con số mà Andie suýt tính nhầm vào doanh thu ở đầu chapter. Nếu tỉ lệ này tăng theo tháng, đó sẽ là tín hiệu cảnh báo quan trọng cần theo dõi trong Timeline (Lens #4).
+
 ---
 
 ## Báo cáo sơ bộ — 11:45 AM
