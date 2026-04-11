@@ -133,3 +133,70 @@ def chart_02_distribution(df: pd.DataFrame) -> None:
 
     plt.tight_layout()
     save_fig(fig, "chart-02-distribution.png", img_dir=IMG_CH01)
+
+
+def chart_02b_category_breakdown(df: pd.DataFrame) -> None:
+    """Pie + bar charts: order count and revenue by category."""
+    # Only completed orders
+    completed = df[df["status"] == "Hoàn thành"].copy()
+
+    cat_stats = completed.groupby("category").agg(
+        order_count=("order_id", "count"),
+        total_revenue=("revenue", "sum"),
+    ).sort_values("total_revenue", ascending=False)
+
+    fig, axes = plt.subplots(1, 3, figsize=(18, 7),
+                             gridspec_kw={"width_ratios": [1, 1, 1.3]})
+    fig.suptitle("Lens #2b: Phân bổ theo danh mục sản phẩm",
+                 fontsize=14, fontweight="bold")
+
+    colors = CAT_COLORS[:len(cat_stats)]
+
+    # 1. Pie: số đơn theo danh mục
+    axes[0].pie(
+        cat_stats["order_count"], labels=cat_stats.index,
+        colors=colors, autopct="%1.1f%%", startangle=90,
+        textprops={"fontsize": 9},
+        wedgeprops={"edgecolor": "white", "linewidth": 1.5},
+    )
+    axes[0].set_title("Số đơn hàng theo danh mục", fontsize=11)
+
+    # 2. Pie: doanh thu theo danh mục
+    axes[1].pie(
+        cat_stats["total_revenue"], labels=cat_stats.index,
+        colors=colors, autopct="%1.1f%%", startangle=90,
+        textprops={"fontsize": 9},
+        wedgeprops={"edgecolor": "white", "linewidth": 1.5},
+    )
+    axes[1].set_title("Doanh thu theo danh mục", fontsize=11)
+
+    # 3. Bar: so sánh % đơn vs % doanh thu cạnh nhau
+    cat_stats["order_pct"] = cat_stats["order_count"] / cat_stats["order_count"].sum() * 100
+    cat_stats["revenue_pct"] = cat_stats["total_revenue"] / cat_stats["total_revenue"].sum() * 100
+
+    x = range(len(cat_stats))
+    width = 0.35
+    bars1 = axes[2].bar([i - width / 2 for i in x], cat_stats["order_pct"],
+                        width, label="% Số đơn", color=PALETTE["primary"], alpha=0.85)
+    bars2 = axes[2].bar([i + width / 2 for i in x], cat_stats["revenue_pct"],
+                        width, label="% Doanh thu", color=PALETTE["negative"], alpha=0.85)
+    axes[2].set_xticks(list(x))
+    axes[2].set_xticklabels(cat_stats.index, rotation=25, ha="right", fontsize=9)
+    axes[2].set_ylabel("Phần trăm (%)")
+    axes[2].set_title("So sánh: % đơn vs % doanh thu", fontsize=11)
+    axes[2].legend(fontsize=9)
+
+    # Annotate the gap for Điện Tử
+    if "Điện Tử" in cat_stats.index:
+        idx = list(cat_stats.index).index("Điện Tử")
+        order_p = cat_stats.loc["Điện Tử", "order_pct"]
+        rev_p = cat_stats.loc["Điện Tử", "revenue_pct"]
+        axes[2].annotate(
+            f"Chỉ {order_p:.0f}% đơn\nnhưng {rev_p:.0f}% doanh thu!",
+            xy=(idx + width / 2, rev_p), xytext=(idx + 1.2, rev_p + 5),
+            fontsize=8, color=PALETTE["negative"], fontweight="bold",
+            arrowprops=dict(arrowstyle="->", color=PALETTE["negative"], lw=1.2),
+        )
+
+    plt.tight_layout()
+    save_fig(fig, "chart-02b-category-breakdown.png", img_dir=IMG_CH01)

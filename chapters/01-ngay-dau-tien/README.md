@@ -137,6 +137,16 @@ Andie sort cột doanh thu và nhận ra ngay: có đơn 50,000đ, có đơn 28,
 
 Andie ghi vào notes: *"Không dùng mean cho doanh thu. Median = 391,000đ. Mean = 887,000đ. Chênh lệch 2.27x — nếu báo mean, sếp sẽ có kỳ vọng sai về giá trị đơn hàng điển hình."*
 
+### Phân bổ theo danh mục — Ai đang "gánh" doanh thu?
+
+Nhìn distribution xong, Andie hỏi tiếp: *"Danh mục nào bán nhiều nhất? Danh mục nào tạo ra nhiều doanh thu nhất? Hai câu này có cùng đáp án không?"*
+
+![Biểu đồ 2b: Phân bổ số đơn và doanh thu theo danh mục sản phẩm.](./images/chart-02b-category-breakdown.png)
+
+*Hình 2b: So sánh % số đơn vs % doanh thu theo danh mục — Điện Tử chiếm ít đơn nhưng gánh phần lớn doanh thu.*
+
+> 💡 **Insight:** Điện Tử chỉ chiếm ~18% số đơn nhưng tạo ra ~41% doanh thu. Ngược lại, Thời Trang và FMCG có nhiều đơn nhưng giá trị thấp. Đây là dấu hiệu đầu tiên của **Concentration** (Lens #5) — nhưng Andie chưa biết điều đó.
+
 ---
 
 ## Báo cáo sơ bộ — 11:45 AM
