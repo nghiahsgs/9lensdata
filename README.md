@@ -1,185 +1,146 @@
-# Andie va Nhung Con So Biet Noi
-### Sach phan tich du lieu — 9 Lens Bat Bien
+# Andie và Những Con Số Biết Nói
+### *Sách phân tích dữ liệu — 9 Lens Bất Biến*
+
+> *Cuốn sách này không dạy Python. Không dạy SQL. Không dạy Excel.*
+> *Cuốn sách này dạy **cách nhìn**.*
 
 ---
 
-## Gioi thieu
+## Cuốn sách này dành cho ai?
 
-Cuon sach ke ve **Andie** — mot Junior Analyst ngay dau di lam — va hanh trinh cau hoc cach "nghe" data noi. Qua tung tinh huong thuc te (sai lam, bi sep hoi van, bao cao sai), ban se hoc duoc **9 Lens** — 9 goc nhin bat bien, apply duoc cho moi nganh, moi loai du lieu.
-
-> *Cuon sach nay khong day Python. Khong day SQL. Khong day Excel.*
-> *Cuon sach nay day cach nhin.*
-
----
-
-## Cau truc thu muc
-
-```
-9lensdata/
-├── README.md
-├── requirements.txt
-├── .gitignore
-│
-├── chapters/                    # Noi dung sach — moi chapter tu chua data + images
-│   ├── 00-loi-mo-dau/
-│   │   └── README.md
-│   ├── 01-ngay-dau-tien/            Lens #1 Completeness + #2 Distribution
-│   │   ├── README.md
-│   │   ├── images/
-│   │   │   ├── chart-01-completeness.png
-│   │   │   └── chart-02-distribution.png
-│   │   └── data/
-│   │       └── techmart-orders-mar2024.csv       12,847 don hang thang 3/2024
-│   ├── 02-thang-3-giam/             Lens #3 Outliers + #4 Timeline
-│   │   ├── README.md
-│   │   ├── images/
-│   │   │   └── chart-03-timeline-outliers.png
-│   │   └── data/
-│   │       └── techmart-orders-full2024.csv      134,504 don hang T3/2023 - T9/2024
-│   ├── 03-khach-hang-quan-trong/    Lens #5 Concentration + #8 Segmentation
-│   │   ├── README.md
-│   │   ├── images/
-│   │   │   ├── chart-04-concentration.png
-│   │   │   └── chart-07-segmentation.png
-│   │   └── data/
-│   │       └── techmart-customers.csv            28,000 khach hang + RFM + churn
-│   ├── 04-correlation-volatility/   Lens #6 Correlation + #9 Volatility + Marketing
-│   │   ├── README.md
-│   │   ├── images/
-│   │   │   ├── chart-05-correlation.png
-│   │   │   ├── chart-08-volatility.png
-│   │   │   └── chart-09-marketing-correlation.png
-│   │   └── data/
-│   │       └── techmart-marketing-campaigns.csv  488 campaigns, 6 kenh quang cao
-│   ├── 05-ke-chuyen-dung-nguoi/     Lens #7 Comparison + Multi-source storytelling
-│   │   ├── README.md
-│   │   ├── images/
-│   │   │   ├── chart-06-comparison.png
-│   │   │   ├── chart-10-finance-pl.png
-│   │   │   └── chart-11-operations-dashboard.png
-│   │   └── data/
-│   │       ├── techmart-finance-monthly.csv      P&L hang thang 2023-2024
-│   │       └── techmart-operations-daily.csv     Giao hang, NPS, return rate hang ngay
-│   └── 06-master-framework/
-│       └── README.md                Tong hop 9 Lens + Mini Cases da nganh
-│
-└── scripts/                     # Code sinh data + charts (dung chung)
-    ├── generate-data.py             Entry point — sinh tat ca CSV vao chapter/data/
-    ├── generate-charts.py           Entry point — sinh tat ca charts vao chapter/images/
-    ├── shared/                      Shared utilities
-    │   ├── chart_helpers.py             Style, save_fig, data loaders, paths
-    │   ├── data_generators.py           E-commerce + customers generators
-    │   └── data_generators_extra.py     Marketing + finance + ops generators
-    ├── ch01/
-    │   └── charts.py                Charts 01-02 (completeness, distribution)
-    ├── ch02/
-    │   └── charts.py                Chart 03 (timeline + outliers)
-    ├── ch03/
-    │   └── charts.py                Charts 04, 07 (concentration, segmentation)
-    ├── ch04/
-    │   └── charts.py                Charts 05, 08, 09 (correlation, volatility, marketing)
-    └── ch05/
-        └── charts.py                Charts 06, 10, 11 (comparison, finance, operations)
-```
+- **Junior analyst / fresher** vừa đi làm, mở file Excel mà không biết bắt đầu từ đâu
+- **Marketer / founder / PM** phải ra quyết định dựa trên data nhưng chưa tự tin với con số
+- **Sinh viên kinh tế / kỹ thuật** muốn hiểu data analytics ngoài lý thuyết khô khan
+- **Bất kỳ ai** từng báo sai số trước sếp — và muốn tránh lần thứ hai
 
 ---
 
-## 9 Lens Bat Bien
+## Cuốn sách kể về gì?
 
-| # | Lens | Cau hoi cot loi | Chapter | Data |
-|---|------|----------------|---------|------|
-| 1 | COMPLETENESS | Data co o do khong? | Ch.01 | Orders |
-| 2 | DISTRIBUTION | Data trong nhu the nao? | Ch.01 | Orders |
-| 3 | OUTLIERS | Co gi bat thuong khong? | Ch.02 | Orders |
-| 4 | TIMELINE | Xu huong di ve dau? | Ch.02 | Orders (full year) |
-| 5 | CONCENTRATION | 80% den tu 20% nao? | Ch.03 | Customers |
-| 6 | CORRELATION | Thu gi lien quan thu gi? | Ch.04 | Customers + Marketing |
-| 7 | COMPARISON | Tot hay xau so voi gi? | Ch.05 | Finance + Operations |
-| 8 | SEGMENTATION | Average che giau gi? | Ch.03 | Customers |
-| 9 | VOLATILITY | On dinh hay lung tung? | Ch.04 | Orders + Marketing |
+Cuốn sách kể về **Andie** — một Junior Analyst 24 tuổi, không background kỹ thuật, ngày đầu đi làm tại TechMart (công ty e-commerce).
+
+Qua 6 chương, bạn sẽ theo Andie từ **ngày đầu tiên** (báo sai doanh thu 14.6% trước sếp) đến **cuộc họp CEO 15 phút** (51 slide bị cắt thành 6 slide), và cuối cùng trở thành Senior Analyst truyền lại bài học cho junior mới.
+
+Mỗi chương = **1 tình huống công việc thật** + **1-2 Lens mới** + **dataset thật để bạn tự thực hành**.
 
 ---
 
-## Bat dau nhanh
+## 9 Lens Bất Biến
 
-### 1. Cai dat
+9 góc nhìn giúp bạn "nghe" data nói — apply được cho mọi ngành, mọi loại dữ liệu:
+
+| # | Lens | Câu hỏi cốt lõi |
+|---|------|-----------------|
+| 1 | **COMPLETENESS** | Data có ở đó không? Thiếu ở đâu, theo pattern gì? |
+| 2 | **DISTRIBUTION** | Data trông như thế nào? Shape quyết định metric. |
+| 3 | **OUTLIERS** | Có gì bất thường không? Tại sao? |
+| 4 | **TIMELINE** | Xu hướng đi về đâu? Trend, seasonal, hay đột biến? |
+| 5 | **CONCENTRATION** | 80% kết quả đến từ 20% nào? |
+| 6 | **CORRELATION** | Thứ gì liên quan thứ gì? Signal nào predict outcome? |
+| 7 | **COMPARISON** | Tốt hay xấu so với gì? |
+| 8 | **SEGMENTATION** | Average đang che giấu điều gì? |
+| 9 | **VOLATILITY** | Ổn định hay lung tung? |
+
+---
+
+## Đọc sách ở đâu?
+
+### 📖 Cách 1: Đọc online trên GitHub (dễ nhất)
+
+Mở từng chương theo thứ tự:
+
+1. [Lời Mở Đầu](./chapters/00-loi-mo-dau/) — Đọc trước khi bắt đầu
+2. [Chương 1 — Ngày Đầu Tiên](./chapters/01-ngay-dau-tien/) · *Lens #1 Completeness + #2 Distribution*
+3. [Chương 2 — Tháng 3 Doanh Số Giảm?](./chapters/02-thang-3-giam/) · *Lens #3 Outliers + #4 Timeline*
+4. [Chương 3 — Khách Hàng Nào Quan Trọng Nhất?](./chapters/03-khach-hang-quan-trong/) · *Lens #5 Concentration + #8 Segmentation*
+5. [Chương 4 — Cái Gì Đang Predict Cái Gì?](./chapters/04-correlation-volatility/) · *Lens #6 Correlation + #9 Volatility*
+6. [Chương 5 — Kể Chuyện Đúng Với Đúng Người](./chapters/05-ke-chuyen-dung-nguoi/) · *Lens #7 Comparison + Storytelling*
+7. [Chương 6 — 9 Lens Tổng Hợp](./chapters/06-master-framework/) · *Master framework + Mini cases*
+
+### 📄 Cách 2: Tải PDF
+
+Tải file `andie-va-nhung-con-so-biet-noi.pdf` trong [Releases](../../releases) hoặc ở thư mục gốc repo.
+
+### 📓 Cách 3: Đọc bằng Obsidian (khuyến nghị)
+
+1. Tải [Obsidian](https://obsidian.md) (miễn phí)
+2. `Open Folder as Vault` → chọn thư mục `9lensdata/`
+3. Ảnh và link hoạt động inline tự động
+
+---
+
+## Tự thực hành với dataset thật
+
+Mỗi chương đi kèm **dataset CSV thật** để bạn tự phân tích:
+
+| Chapter | Dataset | Số dòng | Bài tập gợi ý |
+|---|---|---|---|
+| Ch.1 | `techmart-orders-mar2024.csv` | 12,847 đơn | Tìm missing values, vẽ histogram doanh thu |
+| Ch.2 | `techmart-orders-full2024.csv` | 134,504 đơn | Vẽ timeline, tìm outliers |
+| Ch.3 | `techmart-customers.csv` | 28,000 KH | Tự tính RFM, segment khách hàng |
+| Ch.4 | `techmart-marketing-campaigns.csv` | 488 campaigns | Tính correlation matrix, tìm confounding variable |
+| Ch.5 | `techmart-finance-monthly.csv` + `techmart-operations-daily.csv` | Full year | Merge 3 nguồn, tạo 1-page summary |
+
+Tất cả dataset đã có sẵn trong `chapters/*/data/`. Clone repo về là có thể chạy luôn.
 
 ```bash
 git clone https://github.com/your-username/9lensdata.git
 cd 9lensdata
+# Mở bằng bất kỳ công cụ nào: Excel, Google Sheets, Python, R...
+```
+
+---
+
+## Liên Hệ Tác Giả
+
+Cuốn sách này **miễn phí**. Bạn được đọc, chia sẻ, tải xuống, và dùng dataset để thực hành mà không cần xin phép — forever.
+
+Có gì muốn góp ý, hỏi thêm, hoặc chia sẻ câu chuyện của bạn với cuốn sách — liên hệ tác giả:
+
+📧 **nghiahsgs@gmail.com**
+
+*Hoặc chỉ cần share cuốn sách này cho một người bạn cũng đang loay hoay với data.*
+
+---
+
+## Cho developers — Tự sinh lại data & charts
+
+Nếu bạn muốn sinh lại data/charts từ đầu hoặc modify:
+
+```bash
 python3 -m venv .venv
 .venv/bin/pip install -r requirements.txt
-```
 
-### 2. Sinh data
-
-```bash
+# Sinh lại 6 file CSV (seed=42, deterministic)
 .venv/bin/python3 scripts/generate-data.py
-```
 
-Output: 6 file CSV trong `chapters/*/data/`. Data duoc sinh voi `seed=42` — chay lai luon ra ket qua giong nhau.
-
-### 3. Sinh charts
-
-```bash
+# Sinh lại 11 file PNG charts
 .venv/bin/python3 scripts/generate-charts.py
 ```
 
-Output: 11 file PNG trong `chapters/*/images/`.
+**Cấu trúc repo:**
 
-### 4. Doc sach
-
-**Obsidian** (khuyen nghi):
-1. Open Folder as Vault → chon thu muc `9lensdata/`
-2. Anh hien thi inline tu dong, mo `chapters/00-loi-mo-dau/README.md` de bat dau
-
-**VS Code**:
-1. Mo thu muc `9lensdata/`
-2. Cai extension **Markdown Preview Enhanced**
-3. `Ctrl+Shift+V` de preview
-
----
-
-## Tu thuc hanh
-
-Sau khi doc moi chapter, ban co the tu phan tich data:
-
-```bash
-# Mo Python interactive
-.venv/bin/python3
-
->>> import pandas as pd
->>> orders = pd.read_csv('chapters/01-ngay-dau-tien/data/techmart-orders-mar2024.csv')
->>> orders.head()
->>> orders.describe()
+```
+9lensdata/
+├── chapters/              # Nội dung sách — mỗi chapter tự chứa data + images
+│   ├── 00-loi-mo-dau/
+│   ├── 01-ngay-dau-tien/
+│   ├── 02-thang-3-giam/
+│   ├── 03-khach-hang-quan-trong/
+│   ├── 04-correlation-volatility/
+│   ├── 05-ke-chuyen-dung-nguoi/
+│   └── 06-master-framework/
+├── scripts/               # Code sinh data + charts (reproducible, seed=42)
+├── requirements.txt
+└── README.md
 ```
 
-**Bai tap goi y:**
+---
 
-| Chapter | Bai tap | File CSV |
-|---|---|---|
-| Ch.1 | Tim missing values, ve histogram doanh thu | `chapters/01-ngay-dau-tien/data/techmart-orders-mar2024.csv` |
-| Ch.2 | Ve timeline doanh thu theo ngay, tim outliers | `chapters/02-thang-3-giam/data/techmart-orders-full2024.csv` |
-| Ch.3 | Tu tinh RFM score, segment khach hang | `chapters/03-khach-hang-quan-trong/data/techmart-customers.csv` |
-| Ch.4 | Tinh correlation matrix, tim confounding variable | `chapters/04-correlation-volatility/data/techmart-marketing-campaigns.csv` |
-| Ch.5 | Merge 3 nguon data, tao 1-page summary | Tat ca 6 files trong chapters/*/data/ |
+## License
+
+**Creative Commons BY-NC-SA 4.0** — Bạn được đọc, chia sẻ, remix cho mục đích phi thương mại, miễn là ghi nguồn và giữ cùng license.
 
 ---
 
-## Chinh sua & dong gop
-
-- **Sua text**: mo file `.md` trong `chapters/` bang bat ky editor nao
-- **Thay chart**: chay lai `generate-charts.py` sau khi sua script
-- **Them data**: sua `data_generators.py` hoac `data_generators_extra.py`, chay lai `generate-data.py`
-- **Them chapter**: tao file moi trong `chapters/`, dat ten theo so thu tu
-
----
-
-## Ghi chu ky thuat
-
-- Anh dung **relative path**: `./images/chart-01-completeness.png` (trong cung chapter folder)
-- Charts co caption: `*Hinh X: ...*`
-- Pause boxes: `> ⏸ ...`
-- Lens tags: `> 🔭 ...`
-- Data sinh bang `numpy.random.seed(42)` — reproducible
-- Charts sinh tu CSV that, khong phai anh tinh
+*Cảm ơn bạn đã đọc đến dòng cuối.* 🙏

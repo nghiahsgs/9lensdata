@@ -132,17 +132,48 @@ TechMart là nơi Andie học. Nhưng 9 Lens không thuộc về e-commerce.
 
 ## Lời Kết
 
-> 💬 **Andie nói với Linh — junior mới join:**
->
+Tháng 12. Cuối năm. Linh — junior mới vào TechMart, 23 tuổi, vừa tốt nghiệp — ngồi ở cái bàn mà Andie từng ngồi năm ngoái. Cô mở file Excel đầu tiên, ngón tay hover trên bàn phím, không biết bắt đầu từ đâu.
+
+Andie đi qua, ngồi xuống cạnh.
+
+> 💬 **Linh** *(hơi lo lắng)*:
+> *"Anh Andie, anh chỉ cho em bắt đầu thế nào với? Em không biết nên tính gì trước..."*
+
+Andie cười. Cậu nhớ lại chính mình một năm trước — cũng ngón tay hover, cũng sợ bấm sai.
+
+> 💬 **Andie:**
 > *"Linh sẽ học rất nhiều tool: Python, SQL, Power BI, Tableau. Tất cả đều quan trọng. Nhưng tool thay đổi theo năm.*
 >
-> *9 Lens này — tôi dùng mỗi ngày, từ 10 năm nay và sẽ còn dùng 10 năm nữa.*
+> *9 Lens này — anh dùng mỗi ngày, và anh nghĩ sẽ còn dùng 10 năm nữa. Bởi vì chúng không phải là công cụ. Chúng là câu hỏi.*
 >
 > *Câu hỏi quan trọng nhất không phải 'Tôi có thể tính gì từ data này?' Mà là: 'Quyết định nào sẽ thay đổi dựa trên những gì tôi tìm ra?'"*
+
+Linh ghi vào notebook. Andie nhìn cô gõ và nhớ lại: chính cậu, một năm trước, cũng đã ghi vào một tờ giấy A4 sau khi báo sai 14.6% trước sếp.
+
+> 💬 **Andie:**
+> *"Một điều nữa, Linh. Em sẽ sai. Nhiều lần. Anh đã sai mỗi tháng trong năm đầu tiên — và có những lần sai rất đau. Nhưng mỗi lần sai, em sẽ học được một lens mới. Đừng sợ sai. Sợ là không hiểu tại sao mình sai."*
+
+Linh gật đầu, mở file, bắt đầu quét cột đầu tiên. Không vội bấm SUM. Đầu tiên, cô hỏi: *"Dữ liệu này về ai, cái gì, khi nào, từ đâu, để làm gì?"*
+
+Andie mỉm cười, đứng dậy về bàn. Một lens đã truyền đi.
 
 ---
 
 *— Hết —*
+
+---
+
+## Liên Hệ Tác Giả
+
+Cuốn sách này **miễn phí**. Bạn được đọc, chia sẻ, tải xuống, và dùng dataset để thực hành mà không cần xin phép — forever.
+
+Có gì muốn góp ý, hỏi thêm, hoặc chia sẻ câu chuyện của bạn — liên hệ tác giả:
+
+📧 **nghiahsgs@gmail.com**
+
+*Hoặc chỉ đơn giản: share cuốn sách này cho một người bạn cũng đang loay hoay với data.*
+
+**Cảm ơn bạn đã đọc đến trang cuối.**
 
 ---
 

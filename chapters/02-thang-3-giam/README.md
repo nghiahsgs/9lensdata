@@ -5,6 +5,8 @@
 
 ## Câu hỏi bẫy trong cuộc họp
 
+Hai tuần sau ngày đầu tiên. Andie đã quen với rhythm công việc: sáng check data, chiều viết report, tối đọc thêm về analytics. Cậu thấy mình đang tiến bộ. Có lẽ hơi tự tin quá sớm.
+
 *"Tháng 3 revenue 4.3 tỷ. Tháng 2 là 5.1 tỷ. Giảm 16%. Vấn đề gì thế?"*
 
 Giám đốc kinh doanh — anh Khải — mở đầu cuộc họp thứ Hai bằng câu đó. Cả phòng xôn xao. Ai đó: *"Marketing yếu."* Người khác: *"Thị trường khó."*
@@ -36,6 +38,12 @@ Rồi cậu tự hỏi: *Vậy so sánh đúng trông như thế nào?*
 
 ---
 
+Anh Trung gửi thêm cho cậu file data cả năm — 134,504 đơn hàng từ tháng 3/2023 đến tháng 9/2024. *"Em đừng chỉ nhìn 1 tháng. Nhìn cả chuỗi thời gian đi."*
+
+Andie mở file, lần này không vội. Cậu nhớ lại bài học tuần trước: *hỏi trước, tính sau.* Cậu tự hỏi: *"Nếu mình nhìn doanh thu cả năm thay vì chỉ 2 tháng — câu chuyện có khác không?"*
+
+Khác. Rất khác.
+
 ## 🔭 Lens #4: TIMELINE
 
 > *Mọi con số đều xảy ra trong thời gian. Trend, seasonality, hay đột biến? Tách ra trước khi kết luận.*
@@ -52,6 +60,10 @@ Rồi cậu tự hỏi: *Vậy so sánh đúng trông như thế nào?*
 > 3. "Spike bất thường" tháng 5 (index 2.8x) — bạn sẽ làm gì với điểm này trong analysis?
 
 ---
+
+Andie nhìn biểu đồ và bắt đầu thấy những thứ mà slide MoM của cậu đã bỏ qua hoàn toàn: Valentine spike tháng 2, seasonal dip tháng 3, flash sale tháng 4... Mỗi "đỉnh" và "đáy" đều có lý do. Cậu đã so sánh 2 tháng mà không hỏi "tháng nào có gì đặc biệt?"
+
+Nhưng nhìn kỹ hơn, cậu thấy thêm một vấn đề: có những ngày revenue rớt xuống gần 0, hoặc tăng vọt bất thường. Đó là gì?
 
 ## 🔭 Lens #3: OUTLIERS
 
@@ -91,6 +103,12 @@ Rồi cậu tự hỏi: *Vậy so sánh đúng trông như thế nào?*
 
 ---
 
+---
+
+Andie nhìn bảng phân loại outlier. Mỗi dòng cậu phải check: hỏi IT, hỏi marketing, confirm với operations. Tốn cả buổi chiều. Nhưng cậu nhận ra: nếu không phân loại, cậu sẽ hoặc xóa nhầm signal quan trọng, hoặc giữ lại data lỗi trong analysis.
+
+*"Outlier giống như tiếng chuông báo cháy — có thể là cháy thật, có thể là false alarm. Nhưng không bao giờ được ignore."*
+
 ## So sánh đúng — Apples-to-apples?
 
 Ngồi lại một mình, Andie không bào chữa. Cậu tự hỏi: *Mình nên check những gì TRƯỚC khi so sánh hai con số?*
@@ -118,6 +136,12 @@ Checklist So Sánh Apples-to-Apples (Andie tự xây — sau lần sai đầu ti
 | YoY (vs T3/2023) | 3,654,000,000đ | 4,387,000,000đ | **+20.1% ✅** | Thực ra đang tăng trưởng tốt! |
 
 > 💡 **Insight:** Tháng 3 không phải "tệ hơn" — nó đang tăng trưởng **20.1% YoY**. Vấn đề thật là: revenue/đơn giảm 24.6% so với tháng 2. Hai điều này cần 2 giải pháp khác nhau hoàn toàn.
+
+---
+
+Andie in tờ checklist ra, dán lên vách ngăn bàn làm việc. Đồng nghiệp đi qua hỏi: *"Checklist gì thế?"* Cậu cười: *"Checklist cho người vừa bị bẽ mặt trước 15 người."*
+
+Tháng sau, khi một junior khác present MoM comparison trong meeting, Andie thấy ngay: tháng 2 (29 ngày + Valentine) đang được so với tháng 1 (31 ngày, không event). Cậu nhắn riêng cho bạn đó sau meeting — không nói trước phòng. Vì cậu biết cảm giác đó.
 
 ---
 

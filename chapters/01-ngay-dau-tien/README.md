@@ -96,7 +96,9 @@ Cậu nhắn hỏi anh Trung 3 câu. Nhận lại:
 
 > *Trước khi phân tích bất cứ thứ gì, hỏi: data có ở đó không? Thiếu ở đâu, thiếu theo pattern gì?*
 
-Andie bắt đầu "quét sức khỏe" của dataset. Không phải tính toán — mà là nhìn.
+Andie quyết định làm lại từ đầu. Lần này không vội tính. Cậu tự nhủ: *"Mình sẽ không bấm SUM cho đến khi hiểu rõ từng cột trong file này."*
+
+Cậu bắt đầu "quét sức khỏe" của dataset. Không phải tính toán — mà là nhìn.
 
 ![Biểu đồ 1: Heatmap missing values theo cột × tuần. Màu đỏ = vấn đề nghiêm trọng.](./images/chart-01-completeness.png)
 
@@ -115,6 +117,12 @@ Andie bắt đầu "quét sức khỏe" của dataset. Không phải tính toán
 > 💡 **Insight:** Cột "Rating KH" thiếu ~60% — **không phải ngẫu nhiên**: KH chỉ rating khi không hài lòng. Đây là Survivorship Bias ngay từ đầu. Cột "Quận/Huyện" thiếu ~38% — **systematic**: data nhập từ app mobile không require field này. Hai loại missing khác nhau → cách xử lý hoàn toàn khác nhau.
 
 ---
+
+---
+
+Andie ngồi lại, nhìn bảng kết quả. Cậu vừa phát hiện 60% rating bị missing — và không phải ngẫu nhiên. Cảm giác lạ lắm: mới sáng nay cậu còn nghĩ file này "bình thường", giờ thì thấy nó đầy lỗ hổng.
+
+*"Ok, mình biết data thiếu gì rồi. Nhưng phần data CÓ ở đó — nó trông ra sao?"*
 
 ## 🔭 Lens #2: DISTRIBUTION
 
@@ -138,6 +146,8 @@ Andie sort cột doanh thu và nhận ra ngay: có đơn 50,000đ, có đơn 28,
 | Rating | Left-skewed | Survivorship bias — KH hài lòng không rate | **Đừng tin** đây là rating đại diện |
 
 Andie ghi vào notes: *"Không dùng mean cho doanh thu. Median = 391,000đ. Mean = 887,000đ. Chênh lệch 2.27x — nếu báo mean, sếp sẽ có kỳ vọng sai về giá trị đơn hàng điển hình."*
+
+Andie dừng lại. Cậu vừa nhận ra một điều đáng sợ: nếu sáng nay cậu báo mean 887,000đ thay vì median 391,000đ — sếp sẽ nghĩ đơn hàng trung bình gần 900K. Thực tế hơn nửa số đơn chỉ dưới 400K. Sai lệch 2.27 lần. Chỉ vì chọn sai metric.
 
 ### Phân bổ theo danh mục — Ai đang "gánh" doanh thu?
 
@@ -171,6 +181,12 @@ Andie nhìn tiếp 2 cột chưa khai thác: discount và status.
 
 ---
 
+---
+
+11 giờ 30. Andie đã ngồi với file này hơn 2 tiếng. Từ lúc bấm SUM sai cho đến giờ — cậu đã đi qua 4 lần "tưởng hiểu rồi hóa ra chưa". Nhưng lần đầu tiên trong ngày, cậu cảm thấy tự tin viết một thứ gì đó.
+
+Cậu mở Google Docs và bắt đầu gõ bản báo cáo sơ bộ. Không phải để impress sếp — mà vì cậu thực sự đã nhìn thấy câu chuyện trong data.
+
 ## Báo cáo sơ bộ — 11:45 AM
 
 ```
@@ -195,6 +211,15 @@ PHÁT HIỆN NHANH
 📍 TP.HCM: 58% doanh thu  |  HN: 27%  |  Tỉnh khác: 15%
 📦 52% đơn chỉ mua 1 sản phẩm → cơ hội upsell/cross-sell lớn
 ```
+
+---
+
+Anh Trung nhắn lại sau 5 phút:
+
+> 💬 **Anh Trung:**
+> *"Tốt hơn sáng nhiều rồi. Ghi nhớ: luôn nói rõ scope (1-28/3), luôn nói rõ definition (chỉ đơn hoàn thành), và luôn flag data quality issues. Em làm được cả 3 rồi đó."*
+
+Andie đọc tin nhắn hai lần. Không phải vì không hiểu — mà vì đây là lần đầu tiên trong ngày cậu nhận được lời khen. Và cậu biết lời khen này cậu đã earn được, sau khi sai đủ nhiều.
 
 ---
 

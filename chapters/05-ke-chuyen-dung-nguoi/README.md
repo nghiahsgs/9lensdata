@@ -37,9 +37,13 @@ Rồi chị đứng dậy, cuộc họp kết thúc sau 14 phút. 51 slide — k
 
 ---
 
-Andie đi ra khỏi phòng họp, cầm laptop về bàn. Cậu ngồi một lúc, nhìn vào file Powerpoint 51 slide.
+Andie đi ra khỏi phòng họp, cầm laptop về bàn. Cậu ngồi xuống ghế, mở file PowerPoint 51 slide ra lần nữa, nhìn vào slide 12 — cái slide làm CEO đặt bút xuống.
+
+Về mặt kỹ thuật, slide đó không có gì sai. Correlation matrix đẹp. Màu sắc đúng. Số liệu chính xác. Nhưng đó chính là vấn đề: cậu xây slide cho một analyst khác hiểu, không phải cho CEO ra quyết định.
 
 *Mình đã làm đúng mọi thứ. Tính đúng. Phân tích đúng. Nhưng mình kể sai câu chuyện.*
+
+Đây là một loại sai lầm mới — không phải sai lầm về data, mà về **audience**. Tất cả lens cậu học 7 tháng qua đều về cách nhìn data. Không lens nào dạy cách nhìn người đang ngồi đối diện.
 
 Cậu nhắn cho anh Trung: *"Anh ơi, em cần học cách viết executive summary. Gấp."*
 
@@ -184,6 +188,10 @@ Cậu mở bằng slide đầu tiên: *"Q4 có thể đạt target nếu chúng 
 
 > 💬 **CEO:**
 > *"Đây là báo cáo tốt nhất tôi nhận được từ data team từ trước đến giờ. Vấn đề rõ. Nguyên nhân rõ. Tôi cần làm gì rõ. Approve."*
+
+Andie bước ra khỏi phòng họp, cảm giác khác hẳn lần trước. Không phải tự hào — mà là nhận ra một điều mà 7 tháng trước cậu không thể hiểu: **mục đích cuối cùng của analysis không phải là insight. Là quyết định.**
+
+Insight không ai hiểu = không có quyết định = không có giá trị.
 
 51 slide → 6 slide. Không phải vì Andie biết ít hơn. Mà vì cậu hiểu rõ hơn: **ai đang nghe, họ cần biết gì, và họ cần ra quyết định gì.**
 

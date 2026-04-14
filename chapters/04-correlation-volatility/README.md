@@ -5,7 +5,9 @@
 
 ## Từ mô tả sang dự đoán
 
-Tháng thứ 5. Sếp đặt bài toán: *"Andie, em có thể dự đoán KH nào sắp rời đi không? Và danh mục nào đang rủi ro nhất?"*
+Tháng thứ 5. Andie đã qua giai đoạn "sai cơ bản" — cậu biết check completeness, biết dùng median, biết phân loại outlier, biết segment trước khi kết luận. Nhưng tất cả những thứ đó là **mô tả quá khứ**. Sếp bắt đầu muốn thứ khác.
+
+Sếp đặt bài toán: *"Andie, em có thể dự đoán KH nào sắp rời đi không? Và danh mục nào đang rủi ro nhất?"*
 
 Đây là 2 câu hỏi khác nhau về cơ bản: một cái về **pattern trong data**, một cái về **độ ổn định**. Cần 2 lens khác nhau.
 
@@ -58,7 +60,9 @@ Experiment PROVE (hoặc disprove) nó.
 
 ### Sai lầm Andie gần mắc — Correlation ≠ Causation
 
-Nhìn vào bảng trên, Andie thấy ngay: rating trung bình có r = −0.44 với churn. Con số đủ lớn để tự tin. Cậu chuẩn bị một đề xuất và mang ra team meeting:
+Nhìn vào bảng trên, Andie thấy ngay: rating trung bình có r = −0.44 với churn. Con số đủ lớn để tự tin. Cậu hào hứng — đây là lần đầu tiên cậu tự tìm ra một pattern có vẻ actionable. Không cần sếp gợi ý, không cần anh Trung hỏi.
+
+Cậu chuẩn bị một đề xuất và mang ra team meeting:
 
 > 💬 **Andie:**
 > *"Rating thấp GÂY RA churn. Nếu chúng ta cải thiện rating — ví dụ qua customer service — churn sẽ giảm."*
@@ -89,6 +93,10 @@ Sự thật: Cả hai đều là HỆ QUẢ của cùng một nguyên nhân.
 **"Mình đã nhìn r = −0.44 và kết luận nhân quả. Sai lầm cơ bản nhất trong data analysis."**
 
 Andie ghi lại — không phải vì Minh bảo ghi, mà vì cậu vừa suýt đề xuất một giải pháp sai hoàn toàn dựa trên một kết luận sai.
+
+Sau meeting, Andie đến bàn Minh: *"Anh ơi, sao anh nhìn ra confounding variable nhanh thế?"* Minh cười: *"Vì năm đầu tiên anh cũng sai y hệt em. Anh từng đề xuất công ty bỏ 200 triệu vào cải thiện customer service vì 'rating cao = retention cao'. Sếp approve. Chạy 3 tháng. Churn không giảm. Hóa ra vấn đề là shipping. 200 triệu bay."*
+
+Andie im lặng. Sai lầm của cậu mới chỉ ở dạng slide. Của Minh đã ở dạng tiền thật.
 
 ---
 
@@ -156,7 +164,9 @@ Sự thật: Cả hai đều là HỆ QUẢ của mùa mua sắm cao điểm.
 
 Andie viết lại email cho chị Hương, thêm một đoạn: *"Cần thiết kế holdout test — giữ một số ngày lễ nhỏ không chạy campaign — để verify. Trước khi scale budget, nên có data từ natural experiment."*
 
-Chị Hương phản hồi sau 10 phút: *"Good catch. Chị chưa nghĩ đến điều này."*
+Chị Hương phản hồi sau 10 phút: *"Good catch. Chị chưa nghĩ đến điều này. Chị làm marketing 4 năm rồi — không ai từng hỏi chị 'có control group không'. Mọi người chỉ nhìn ROAS cao rồi scale. Em giữ nguyên tư duy này nhé."*
+
+Andie đọc tin nhắn, cảm thấy có gì đó thay đổi trong cách cậu nhìn công việc. Trước đây, "correct analysis" có nghĩa là tính đúng. Giờ cậu hiểu: correct analysis có nghĩa là **hỏi đúng câu hỏi trước khi tính bất cứ thứ gì**.
 
 ### Khi câu hỏi cần 2 Lens — Correlation + Volatility
 
@@ -201,6 +211,14 @@ CV > 50%  → Volatile, đừng forecast — scenario plan thay thế
 ```
 
 > 💡 **Insight:** FMCG CV = 8% → forecast tin cậy ±10%. Bundle CV = 78% → forecast vô nghĩa. Sai lầm phổ biến: dùng cùng 1 model để forecast cả FMCG lẫn Bundle — hoàn toàn khác nhau.
+
+---
+
+Hai tuần sau, chị Hương gửi cho Andie kết quả holdout test: 5 ngày lễ nhỏ không chạy campaign, so với 5 ngày lễ chạy campaign. Kết quả: ROAS campaign đúng là có lift — nhưng chỉ **1.3x** so với organic, không phải 2.5x như tưởng. Vẫn worth investment, nhưng budget allocation cần điều chỉnh lại hoàn toàn.
+
+> 💬 **Chị Hương:** *"Nếu không có holdout test, chị đã đề xuất Q4 budget 1.2 tỷ vào campaign ngày lễ. Giờ chị biết 700 triệu là đủ, 500 triệu còn lại dồn sang Email. Em vừa tiết kiệm cho chị 500 triệu và tăng ROI."*
+
+Andie đọc tin nhắn 3 lần. Đây là lần đầu tiên analysis của cậu được đo bằng **tiền cụ thể**.
 
 ---
 
