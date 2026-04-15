@@ -1,18 +1,17 @@
 /* ============================================================
-   LaTeX-vibe Book Style
+   GitHub Markdown Style for PDF
    "Andie và Những Con Số Biết Nói"
-   Inspired by: LaTeX book class, Tufte books, Edward Tufte CSS
    ============================================================ */
 
 @page {
-  size: A5;
-  margin: 2cm 1.8cm 2.2cm 1.8cm;
+  size: A4;
+  margin: 2.2cm 2.2cm 2.4cm 2.2cm;
 
   @bottom-center {
     content: counter(page);
-    font-family: "Palatino", "Palatino Linotype", serif;
+    font-family: -apple-system, "Helvetica Neue", "Segoe UI", sans-serif;
     font-size: 9pt;
-    color: #555;
+    color: #8b949e;
   }
 }
 
@@ -21,438 +20,359 @@
   @bottom-center { content: none; }
 }
 
-@page chapter-page {
-  @bottom-center {
-    content: counter(page);
-    font-family: "Palatino", serif;
-    font-size: 9pt;
-    color: #555;
-  }
-}
-
-/* ============================================================
-   Base typography — LaTeX-like
-   ============================================================ */
-html {
-  font-family: "Palatino", "Palatino Linotype", "Book Antiqua", "URW Palladio L", serif;
-  font-size: 10.5pt;
-  line-height: 1.5;
-  color: #1a1a1a;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  text-align: justify;
-  hyphens: auto;
-  -webkit-hyphens: auto;
-  font-feature-settings: "kern" 1, "liga" 1, "onum" 1;
-}
-
 /* ============================================================
    Hide pandoc's auto title block
    ============================================================ */
 header#title-block-header { display: none; }
 
 /* ============================================================
-   Cover page — minimalist book cover
+   Base typography — GitHub markdown
+   ============================================================ */
+html {
+  font-family: -apple-system, "Helvetica Neue", "Segoe UI", "Noto Sans",
+               "Liberation Sans", Arial, sans-serif;
+  font-size: 11pt;
+  line-height: 1.6;
+  color: #1f2328;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  word-wrap: break-word;
+}
+
+/* ============================================================
+   Cover page
    ============================================================ */
 .cover {
   page-break-after: always;
   page-break-before: avoid;
   text-align: center;
-  padding: 3cm 1.5cm 2cm 1.5cm;
+  padding: 5cm 2cm 3cm 2cm;
   margin: 0;
+  background: #ffffff;
 }
 
 .cover-eyebrow {
-  font-family: "Palatino", serif;
   font-size: 10pt;
-  font-style: italic;
-  letter-spacing: 0.2em;
-  color: #555;
-  margin-bottom: 2.5em;
-  text-indent: 0;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #656d76;
+  margin-bottom: 3em;
 }
 
 .cover-title {
-  font-family: "Palatino", serif;
-  font-size: 28pt;
-  font-weight: normal;
-  letter-spacing: 0.01em;
-  line-height: 1.2;
-  color: #000;
-  margin: 0 auto 0.5em auto;
-  text-indent: 0;
+  font-size: 36pt;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: #1f2328;
+  margin: 0 auto 0.8em auto;
 }
 
 .cover-divider {
-  width: 4.5cm;
+  width: 4cm;
   height: 0;
-  border-top: 0.6pt solid #000;
-  margin: 1em auto;
+  border-top: 2pt solid #0969da;
+  margin: 1.2em auto;
 }
 
 .cover-subtitle {
-  font-family: "Palatino", serif;
-  font-size: 12pt;
-  font-style: italic;
-  color: #333;
-  margin: 0.6em auto 2em auto;
-  max-width: 12cm;
+  font-size: 14pt;
+  font-weight: 400;
+  color: #656d76;
+  margin: 1em auto 3em auto;
+  max-width: 13cm;
   line-height: 1.4;
-  text-indent: 0;
 }
 
 .cover-author {
-  font-family: "Palatino", serif;
-  font-size: 10pt;
-  color: #000;
-  font-variant: small-caps;
-  letter-spacing: 0.25em;
-  margin: 1.5em 0 0 0;
-  text-indent: 0;
+  font-size: 11pt;
+  color: #1f2328;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  margin: 2em 0 0 0;
+  text-transform: uppercase;
 }
 
 .cover-tagline {
-  font-family: "Palatino", serif;
+  font-size: 11pt;
   font-style: italic;
-  font-size: 9.5pt;
-  color: #666;
-  max-width: 11cm;
-  margin: 2em auto 0 auto;
-  text-align: center;
-  line-height: 1.55;
-  text-indent: 0;
+  color: #656d76;
+  max-width: 13cm;
+  margin: 3em auto 0 auto;
+  line-height: 1.6;
 }
 
 /* ============================================================
-   Headings — LaTeX book chapter style
+   Headings — GitHub markdown style
    ============================================================ */
-h1 {
-  font-family: "Palatino", serif;
-  font-size: 22pt;
-  font-weight: normal;
-  font-variant: small-caps;
-  letter-spacing: 0.02em;
-  text-align: center;
-  color: #000;
-  margin: 3em 0 0.3em 0;
-  padding: 0 0 0.5em 0;
-  border-bottom: 0.5pt solid #000;
-  page-break-before: always;
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+  font-weight: 600;
+  line-height: 1.25;
+  color: #1f2328;
   page-break-after: avoid;
-  page: chapter-page;
 }
 
-h1::before {
-  content: "❦";
-  display: block;
-  font-size: 14pt;
-  color: #888;
-  margin-bottom: 0.6em;
-  font-variant: normal;
+h1 {
+  font-size: 22pt;
+  padding-bottom: 0.3em;
+  border-bottom: 1pt solid #d1d9e0;
+  margin-top: 0;
+  padding-top: 0.3em;
+  page-break-before: always;
 }
 
-.cover h1::before { content: none; }
+h1 + p, h1 + h2 { margin-top: 1em; }
 
 h2 {
-  font-family: "Palatino", serif;
-  font-size: 14pt;
-  font-weight: bold;
-  font-style: normal;
-  text-align: left;
-  color: #000;
-  margin: 2em 0 0.4em 0;
-  padding: 0;
-  page-break-after: avoid;
+  font-size: 17pt;
+  padding-bottom: 0.25em;
+  border-bottom: 1pt solid #d1d9e0;
+  margin-top: 1.8em;
 }
 
 h3 {
-  font-family: "Palatino", serif;
-  font-size: 12pt;
-  font-weight: bold;
-  font-style: italic;
-  color: #000;
-  margin: 1.6em 0 0.3em 0;
-  page-break-after: avoid;
+  font-size: 14pt;
+  margin-top: 1.5em;
 }
 
 h4 {
-  font-family: "Palatino", serif;
-  font-size: 11pt;
-  font-weight: bold;
-  color: #000;
-  margin: 1.3em 0 0.3em 0;
-  page-break-after: avoid;
+  font-size: 12pt;
+  margin-top: 1.3em;
 }
 
 /* ============================================================
-   Paragraphs — LaTeX style with indented continuation
+   Paragraphs
    ============================================================ */
 p {
-  margin: 0;
-  text-indent: 1.2em;
+  margin: 0 0 1em 0;
+  text-indent: 0;
   orphans: 3;
   widows: 3;
 }
 
-/* First paragraph after heading: no indent */
-h1 + p, h2 + p, h3 + p, h4 + p,
-hr + p,
-blockquote + p,
-pre + p,
-table + p,
-img + p,
-.cover-tagline {
-  text-indent: 0;
+strong {
+  font-weight: 600;
+  color: #1f2328;
 }
 
-p + p { margin-top: 0; }
-
-strong { font-weight: bold; color: #000; }
 em { font-style: italic; }
 
 a {
-  color: #1a1a1a;
+  color: #0969da;
   text-decoration: none;
-  border-bottom: 0.5pt dotted #888;
+  border-bottom: none;
 }
 
+a:hover { text-decoration: underline; }
+
 /* ============================================================
-   Blockquote — true LaTeX quote env
-   No background, no border, italic, indented both sides
+   Blockquote — GitHub style
    ============================================================ */
 blockquote {
-  margin: 1em 1.5em;
-  padding: 0;
-  border: none;
+  margin: 0 0 1em 0;
+  padding: 0 1em;
+  border-left: 3pt solid #d1d9e0;
   background: none;
-  font-style: italic;
-  font-size: 10pt;
-  color: #333;
+  color: #656d76;
+  font-style: normal;
   page-break-inside: avoid;
 }
 
 blockquote p {
-  text-indent: 0;
-  margin-bottom: 0.4em;
+  margin-bottom: 0.5em;
 }
 
 blockquote p:last-child { margin-bottom: 0; }
 
 blockquote strong {
-  font-style: normal;
-  color: #000;
+  color: #1f2328;
 }
 
+blockquote em { font-style: italic; }
+
 /* ============================================================
-   Code & verbatim — LaTeX verbatim env
+   Code — GitHub style
    ============================================================ */
 pre {
-  font-family: "Menlo", "Monaco", "Courier New", monospace;
-  font-size: 8.5pt;
-  line-height: 1.4;
-  background: #f7f5ef;
+  font-family: "SF Mono", "Menlo", "Monaco", "Consolas", "Liberation Mono", monospace;
+  font-size: 9pt;
+  line-height: 1.45;
+  background: #f6f8fa;
   border: none;
-  border-left: 2pt solid #888;
-  padding: 0.7em 1em;
-  margin: 1em 0.5em;
+  border-radius: 6px;
+  padding: 1em 1.2em;
+  margin: 0 0 1em 0;
   white-space: pre-wrap;
   page-break-inside: avoid;
-  color: #1a1a1a;
+  color: #1f2328;
+  overflow-x: hidden;
 }
 
 code {
-  font-family: "Menlo", "Monaco", "Courier New", monospace;
-  font-size: 9pt;
-  background: none;
-  padding: 0;
-  color: #1a1a1a;
-}
-
-p code, li code, td code {
-  background: #f0ede5;
-  padding: 0 3px;
-  border-radius: 2px;
+  font-family: "SF Mono", "Menlo", "Monaco", "Consolas", "Liberation Mono", monospace;
+  font-size: 9.5pt;
+  background: #eaeef2;
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+  color: #1f2328;
 }
 
 pre code {
   background: transparent;
   padding: 0;
+  border-radius: 0;
+  font-size: inherit;
 }
 
 /* ============================================================
-   Tables — booktabs style (LaTeX professional tables)
+   Tables — GitHub style
    ============================================================ */
 table {
-  width: auto;
-  max-width: 100%;
+  width: 100%;
   border-collapse: collapse;
-  margin: 1.2em auto;
-  font-size: 9pt;
-  font-family: "Palatino", serif;
+  margin: 0 0 1em 0;
+  font-size: 9.5pt;
   page-break-inside: avoid;
+  display: table;
 }
 
 thead {
-  border-top: 1.2pt solid #000;
-  border-bottom: 0.6pt solid #000;
-}
-
-tbody {
-  border-bottom: 1.2pt solid #000;
+  background: #f6f8fa;
 }
 
 th {
-  padding: 0.5em 0.8em;
+  padding: 0.5em 0.85em;
   text-align: left;
-  font-weight: bold;
-  font-style: normal;
-  border: none;
-  background: none;
-  color: #000;
+  font-weight: 600;
+  border: 1pt solid #d1d9e0;
+  color: #1f2328;
 }
 
 td {
-  padding: 0.4em 0.8em;
-  border: none;
+  padding: 0.5em 0.85em;
+  border: 1pt solid #d1d9e0;
   vertical-align: top;
-  line-height: 1.4;
-  text-align: left;
+  line-height: 1.5;
+  color: #1f2328;
 }
 
-tbody tr:nth-child(even) { background: none; }
+tbody tr:nth-child(even) {
+  background: #f6f8fa;
+}
 
 /* ============================================================
-   Figures / images
+   Images
    ============================================================ */
 img {
   max-width: 100%;
   height: auto;
   display: block;
-  margin: 1.4em auto 0.4em auto;
+  margin: 1em auto 0.5em auto;
   page-break-inside: avoid;
+  border-radius: 4px;
 }
 
-p > img {
-  margin-bottom: 0.2em;
-}
-
-/* Caption — italic centered (LaTeX figure caption) */
 p > em:only-child {
   display: block;
   text-align: center;
-  font-size: 9pt;
-  font-style: italic;
-  color: #444;
+  font-size: 9.5pt;
+  color: #656d76;
   margin: 0 auto 1.5em auto;
   max-width: 90%;
+  font-style: italic;
 }
 
 /* ============================================================
    Lists
    ============================================================ */
 ul, ol {
-  margin: 0.6em 0 0.8em 0;
-  padding-left: 1.8em;
+  margin: 0 0 1em 0;
+  padding-left: 2em;
 }
 
 li {
   margin-bottom: 0.25em;
-  line-height: 1.5;
-  text-align: justify;
+  line-height: 1.6;
 }
 
-li > p { text-indent: 0; }
+li > p {
+  margin-bottom: 0.5em;
+}
+
+li::marker {
+  color: #656d76;
+}
 
 /* ============================================================
-   Horizontal rule — LaTeX \rule or fancy break
+   Horizontal rule
    ============================================================ */
 hr {
   border: none;
-  text-align: center;
-  margin: 1.8em 0;
-  height: 1em;
-  page-break-after: avoid;
-}
-
-hr::after {
-  content: "✦  ✦  ✦";
-  font-size: 9pt;
-  color: #888;
-  letter-spacing: 0.3em;
+  height: 1pt;
+  background: #d1d9e0;
+  margin: 2em 0;
 }
 
 /* ============================================================
-   Table of contents — LaTeX \tableofcontents with dot leaders
+   Table of Contents — GitHub README style
    ============================================================ */
 #TOC, nav[role="doc-toc"] {
   page-break-before: always;
   page-break-after: always;
-  font-family: "Palatino", serif;
-  padding: 0.5em 0.3em;
+  padding: 0.5em 0;
 }
 
 #TOC::before, nav[role="doc-toc"]::before {
   content: "Mục Lục";
   display: block;
-  font-size: 24pt;
-  font-variant: small-caps;
-  font-weight: normal;
-  text-align: center;
-  margin: 1.5em 0 0.3em 0;
-  padding: 0;
-  border: none;
-  letter-spacing: 0.05em;
+  font-size: 22pt;
+  font-weight: 600;
+  color: #1f2328;
+  text-align: left;
+  margin: 0.5em 0 0.3em 0;
+  padding-bottom: 0.3em;
+  border-bottom: 1pt solid #d1d9e0;
 }
 
-#TOC::after, nav[role="doc-toc"]::after {
-  content: "";
-  display: block;
-  width: 2cm;
-  border-top: 0.5pt solid #000;
-  margin: 0.4em auto 2.5em auto;
-}
-
-/* All lists: no bullets, no default padding */
 #TOC ul, nav[role="doc-toc"] ul {
   list-style: none;
   padding-left: 0;
   margin: 0;
 }
 
-/* Top-level entries = chapters */
+/* Chapter-level entries */
 #TOC > ul > li, nav[role="doc-toc"] > ul > li {
   display: block;
-  margin-top: 1.6em;
-  margin-bottom: 0.1em;
-  text-indent: 0;
+  margin-top: 1.2em;
+  padding: 0;
 }
 
 #TOC > ul > li > a, nav[role="doc-toc"] > ul > li > a {
   display: block;
   font-size: 12pt;
-  font-weight: bold;
-  font-variant: normal;
-  color: #000;
-  line-height: 1.35;
-  border-bottom: none;
+  font-weight: 600;
+  color: #0969da;
+  line-height: 1.4;
   text-decoration: none;
-  position: relative;
   overflow: hidden;
 }
 
-/* Dot leader + page number on chapter entry */
 #TOC > ul > li > a::after, nav[role="doc-toc"] > ul > li > a::after {
-  content: " " leader(".") " " target-counter(attr(href), page);
-  font-weight: normal;
+  content: " " leader(". ") " " target-counter(attr(href), page);
+  font-weight: 400;
   font-size: 10pt;
-  color: #555;
-  font-style: normal;
+  color: #656d76;
 }
 
-/* Nested list = sections within chapter */
+/* Section-level entries */
 #TOC ul ul, nav[role="doc-toc"] ul ul {
   padding-left: 1.2em;
   margin: 0.4em 0 0 0;
@@ -460,24 +380,22 @@ hr::after {
 
 #TOC ul ul li, nav[role="doc-toc"] ul ul li {
   display: block;
-  margin: 0.15em 0;
-  font-size: 10pt;
-  line-height: 1.5;
-  text-indent: 0;
+  margin: 0.2em 0;
 }
 
 #TOC ul ul li a, nav[role="doc-toc"] ul ul li a {
   display: block;
-  color: #333;
-  font-weight: normal;
-  border-bottom: none;
+  font-size: 10pt;
+  font-weight: 400;
+  color: #1f2328;
+  line-height: 1.55;
   text-decoration: none;
   overflow: hidden;
 }
 
 #TOC ul ul li a::after, nav[role="doc-toc"] ul ul li a::after {
-  content: " " leader(".") " " target-counter(attr(href), page);
-  color: #777;
+  content: " " leader(". ") " " target-counter(attr(href), page);
+  color: #8b949e;
   font-size: 9pt;
 }
 
