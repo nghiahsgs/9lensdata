@@ -59,7 +59,7 @@ Mở từng chương theo thứ tự:
 
 ### 📄 Cách 2: Tải PDF
 
-Tải file `andie-va-nhung-con-so-biet-noi.pdf` trong [Releases](../../releases) hoặc ở thư mục gốc repo.
+[**📥 Tải PDF — andie-va-nhung-con-so-biet-noi.pdf**](./andie-va-nhung-con-so-biet-noi.pdf) (4.9 MB, 58 trang)
 
 ### 📓 Cách 3: Đọc bằng Obsidian (khuyến nghị)
 
